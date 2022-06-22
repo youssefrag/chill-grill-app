@@ -1,13 +1,7 @@
 import {Button, Typography, AppBar, Toolbar, Stack } from '@mui/material';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
-import { makeStyles } from '@mui/styles';
 
-// const useStyles = makeStyles({
-//   btn: {
-//     marginLeft: 10,
-//     marginRight: 10,
-//   }
-// })
+import "./Navbar.css"
 
 export default function Navbar(props) {
   // const classes = useStyles()
@@ -15,7 +9,14 @@ export default function Navbar(props) {
   return(
     <AppBar color='secondary'>
       <Toolbar style={{ width:'100%', display: 'inline-flex', justifyContent: 'space-between' }}>
-        <Button variant='contained' size='large' style={{ marginLeft: 10, marginRight: 10 }}>
+        <Button variant='contained' size='large' 
+          style={{ 
+            marginLeft: 10, 
+            marginRight: 10,
+            display: 'inline-flex',
+            justifyContent: 'space-between',
+          }}
+        >
           <RestaurantMenuIcon />
           Browse Menu
         </Button>
