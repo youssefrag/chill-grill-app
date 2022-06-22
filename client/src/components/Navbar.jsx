@@ -3,9 +3,9 @@ import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import { makeStyles } from '@mui/styles';
 
 // const useStyles = makeStyles({
-//   navbar: {
-//     display: 'flex',
-//     justifyContent: 'space-between',
+//   btn: {
+//     marginLeft: 10,
+//     marginRight: 10,
 //   }
 // })
 
@@ -15,7 +15,7 @@ export default function Navbar(props) {
   return(
     <AppBar color='secondary'>
       <Toolbar style={{ width:'100%', display: 'inline-flex', justifyContent: 'space-between' }}>
-        <Button variant='contained' size='large'>
+        <Button variant='contained' size='large' style={{ marginLeft: 10, marginRight: 10 }}>
           <RestaurantMenuIcon />
           Browse Menu
         </Button>
@@ -23,10 +23,10 @@ export default function Navbar(props) {
           Chill Grill Restaurant
         </Typography>
         <div>
-          <Button variant='contained' size='large'>
+          <Button variant='contained' size='large' style={{ marginLeft: 10, marginRight: 10 }}>
             Login
           </Button>
-          <Button variant='contained' size='large'>
+          <Button variant='contained' size='large' style={{ marginLeft: 10, marginRight: 50 }}>
             Sign Up
           </Button>
         </div>
