@@ -1,10 +1,10 @@
+import { useContext } from "react";
+
+
 import {Button, Typography, AppBar, Toolbar, Stack } from '@mui/material';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 
-import "./Navbar.css"
-
 export default function Navbar(props) {
-  // const classes = useStyles()
 
   return(
     <AppBar color='secondary'>
