@@ -1,10 +1,12 @@
 import { useContext } from "react";
-
+import { useNavigate } from 'react-router-dom'
 
 import {Button, Typography, AppBar, Toolbar, Stack } from '@mui/material';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 
 export default function Navbar(props) {
+
+  let navigate = useNavigate();
 
   return(
     <AppBar color='secondary'>
@@ -24,7 +26,12 @@ export default function Navbar(props) {
           Chill Grill Restaurant
         </Typography>
         <div>
-          <Button variant='contained' size='large' style={{ marginLeft: 10, marginRight: 10 }}>
+          <Button 
+            variant='contained' 
+            size='large' 
+            style={{ marginLeft: 10, marginRight: 10 }}
+            onClick={() => navigate("/login")}
+          >
             Login
           </Button>
           <Button variant='contained' size='large' style={{ marginLeft: 10, marginRight: 50 }}>
