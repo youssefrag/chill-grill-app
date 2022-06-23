@@ -9,7 +9,12 @@ export default function Navbar(props) {
   let navigate = useNavigate();
 
   return(
-    <AppBar color='secondary'>
+    <AppBar 
+      color='secondary'
+      style={{
+        // paddingBottom: 5000,
+      }}
+    >
       <Toolbar style={{ width:'100%', display: 'inline-flex', justifyContent: 'space-between' }}>
         <Button variant='contained' size='large' 
           style={{ 
@@ -34,7 +39,12 @@ export default function Navbar(props) {
           >
             Login
           </Button>
-          <Button variant='contained' size='large' style={{ marginLeft: 10, marginRight: 50 }}>
+          <Button 
+            variant='contained' 
+            size='large' 
+            style={{ marginLeft: 10, marginRight: 50 }}
+            onClick={() => {alert('wadi')}}
+          >
             Sign Up
           </Button>
         </div>

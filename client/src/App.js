@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 
 import Navbar from './components/Navbar';
 import LoginPage from "./components/LoginPage";
+import HomePage from "./components/HomePage";
 
 import './App.css';
 
@@ -20,7 +21,8 @@ function App() {
           <Navbar />
         </header>
         <Routes>
-        <Route path="/login" element={ (isUserLoggedIn) ? <Navigate replace to="/" /> : <LoginPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </UserContextProvider>
     </div>
