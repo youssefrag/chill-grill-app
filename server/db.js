@@ -34,14 +34,14 @@ client.query(
     CREATE TABLE orders (
       id SERIAL PRIMARY KEY NOT NULL,
       order_placed BOOLEAN DEFAULT false,
-      order_ready BOOLEAN DEFAULT false
+      order_ready BOOLEAN DEFAULT false,
     );
     
     CREATE TABLE order_items (
       id SERIAL PRIMARY KEY NOT NULL,
       order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
       menu_id INTEGER REFERENCES menu(id) ON DELETE CASCADE
-    )
+    );
   `
 )
 

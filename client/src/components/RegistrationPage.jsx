@@ -20,6 +20,24 @@ export default function RegistrationPage() {
     setUser(prev => ({...user, [name]: value}))
   }
 
+  const handleSubmit = () => {
+    const { name, email, password } = user
+    if (!name || !email || !password) {
+       alert('Empty values!')
+       return
+    }
+    axios.post('http://localhost:8080/api/auth/register', user, {
+       withCredentials: true,
+    })
+    .then((result) => { 
+       console.log(result.data)
+       navigate("/login")
+    })
+    .catch((error) => {
+       console.log(error)
+    })
+ }
+
   return(
     <>
       <h1>
@@ -78,6 +96,7 @@ export default function RegistrationPage() {
         <Button
           variant='contained' 
           size='large'
+          onClick={handleSubmit}
           style={{ 
             marginLeft: 20,
           }}
