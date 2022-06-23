@@ -42,9 +42,7 @@ export default function RegistrationPage() {
             marginTop: 20,
             marginBottom: 20,
             marginLeft: 20,
-            marginRight: 100000000000000,
             display: 'block',
-            width: '100000px',
           }}
         />
         <TextField
@@ -59,11 +57,33 @@ export default function RegistrationPage() {
             marginTop: 20,
             marginBottom: 20,
             marginLeft: 20,
-            marginRight: 100000000000000,
             display: 'block',
-            width: '100000px',
           }}
         />
+        <TextField
+          type="password"
+          label="Password"
+          name='password'
+          color="secondary"
+          required
+          value={user.password}
+          onChange={handleChange}
+          style={{ 
+            marginTop: 20,
+            marginBottom: 20,
+            marginLeft: 20,
+            display: 'block',
+          }}
+        />
+        <Button
+          variant='contained' 
+          size='large'
+          style={{ 
+            marginLeft: 20,
+          }}
+        >
+          Register!
+        </Button>
       </form>
     </>
   )
