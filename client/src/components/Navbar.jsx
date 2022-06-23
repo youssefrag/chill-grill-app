@@ -11,9 +11,6 @@ export default function Navbar(props) {
   return(
     <AppBar 
       color='secondary'
-      style={{
-        // paddingBottom: 5000,
-      }}
     >
       <Toolbar style={{ width:'100%', display: 'inline-flex', justifyContent: 'space-between' }}>
         <Button variant='contained' size='large' 
@@ -43,9 +40,9 @@ export default function Navbar(props) {
             variant='contained' 
             size='large' 
             style={{ marginLeft: 10, marginRight: 50 }}
-            onClick={() => {alert('wadi')}}
+            onClick={() => navigate("/register")}
           >
-            Sign Up
+            Register
           </Button>
         </div>
       </Toolbar>

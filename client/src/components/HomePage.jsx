@@ -5,13 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function HomePage(props) {
   return(
-    <>
     <h1>Home Page!</h1>
-    <h1>Home Page!</h1>
-    <h1>Home Page!</h1>
-    <h1>Home Page!</h1>
-    <h1>Home Page!</h1>
-    <h1>Home Page!</h1>
-    </>
   )
 }
