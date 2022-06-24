@@ -7,6 +7,11 @@ const PORT = 8080;
 const authRoutes = require('./routes/auth')
 // const orderRoutes = require('./routes/order')
 
+const { Pool } = require('pg');
+const dbParams = require("./lib/db.js")
+const db = new Pool(dbParams)
+db.connect()
+
 App.use(Cors({
   origin: "http://localhost:3000",
   methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
@@ -22,7 +27,7 @@ App.use(CookieSession({
     httpOnly: false
 }));
 
-App.use('/api/auth', authRoutes);
+App.use('/api/auth', authRoutes(db));
 // App.use('/api/order', orderRoutes);
 
 App.listen(PORT, () => {

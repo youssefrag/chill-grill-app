@@ -12,4 +12,18 @@ const addUser = function (name, email, password, pool) {
     })
 }
 
-module.exports = { addUser }
+const getUsers = function (pool) {
+  return pool
+    .query(
+      `SELECT FROM users;`
+    )
+    .then((result) => {
+      console.log(result.rows)
+      return result.rows
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+}
+
+module.exports = { addUser, getUsers }
