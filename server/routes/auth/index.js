@@ -34,8 +34,21 @@ module.exports = (db) => {
     console.log('email:', userData.email)
     console.log('password:', userData.password)
 
-    const foundPassword = await database.getUser(userData.email, db)
-    console.log('found password:', foundPassword)
+    const foundUser = await database.getUser(userData.email, db)
+
+    console.log('found user:', foundUser)
+    // console.log('found password:', foundPassword)
+
+    const foundPassword = foundUser.password
+
+    let userToUse = JSON.parse(JSON.stringify(foundUser));
+    delete userToUse.password;
+
+    if (foundPassword === userData.password) {
+      return res.status(200).json({ message : "Login successful.", user: userToUse })
+    } else {
+      return res.status(401).json({ message: "Invalid login information" })
+    }
   })
 
   return router

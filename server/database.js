@@ -16,13 +16,14 @@ const getUser = function (email, pool) {
   return pool
     .query(
       `
-        SELECT users.password FROM users
+        SELECT * FROM users
         WHERE users.email = $1;
       `, [email]
     )
     .then((result) => {
-      console.log('result:', result.rows[0].password)
-      return result.rows[0].password
+      console.log(result.rows)
+      // console.log('result:', result.rows[0].password)
+      return result.rows[0]
     })
     .catch((err) => {
       console.log(err.message)

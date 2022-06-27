@@ -26,15 +26,20 @@ export default function LoginPage(props) {
       return
     }
     axios.post('http://localhost:8080/api/auth/login', user, {
-        withCredentials: true,
-      })
-      .then((result) => { 
-          console.log(result.data)
-          // navigate("/login")
-      })
-      .catch((error) => {
-          console.log(error)
-      })
+      withCredentials: true,
+    })
+    .then((result) => { 
+      const { email: emailFromServer, name: nameFromServer} = result.data.user
+      console.log(result.data.user)
+
+      const userName = result.data.user.name
+
+      console.log("userName:", userName)
+      // navigate("/login")
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 
   return(
