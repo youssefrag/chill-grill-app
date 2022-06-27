@@ -23,7 +23,21 @@ module.exports = (db) => {
     return res.status(200).json({ message : "Register successful.", user: userToUse })
   });
 
+  router.post('/login', async (req, res) => {
+
+    const userData = {
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    }
+
+    console.log('email:', userData.email)
+    console.log('password:', userData.password)
+
+    const foundPassword = await database.getUser(userData.email, db)
+    console.log('found password:', foundPassword)
+  })
+
   return router
 }
 
-// module.exports = router;

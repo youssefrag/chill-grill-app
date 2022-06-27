@@ -19,6 +19,24 @@ export default function LoginPage(props) {
     setUser(prev => ({...user, [name]: value}))
   }
 
+  const handleSubmit = () => {
+    const { email, password } = user
+    if (!email || !password) {
+      alert('Empty values!')
+      return
+    }
+    axios.post('http://localhost:8080/api/auth/login', user, {
+        withCredentials: true,
+      })
+      .then((result) => { 
+          console.log(result.data)
+          // navigate("/login")
+      })
+      .catch((error) => {
+          console.log(error)
+      })
+  }
+
   return(
     <>
       <h1>
@@ -62,7 +80,7 @@ export default function LoginPage(props) {
         <Button
           variant='contained' 
           size='large'
-          // onClick={handleSubmit}
+          onClick={handleSubmit}
           style={{ 
             marginLeft: 20,
           }}
