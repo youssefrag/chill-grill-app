@@ -22,7 +22,7 @@ App.use(BodyParser.json());
 App.use(Express.static('public'));
 App.use(CookieSession({
     name: 'chillgrillsession',
-    keys: ["12222"],
+    keys: ["123"],
     maxAge: 72 * 60 * 60 * 1000, // 72 hours
     httpOnly: false
 }));
