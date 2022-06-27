@@ -23,7 +23,7 @@ export const UserContextProvider = (props) => {
   }
 
   return(
-    <UserContext.Provider value={{ userContextuserName, setUserName, isUserLoggenIn: props.isUSerLoggenIn, setUserLoggenIn: props.setUserLoggenIn }}>
+    <UserContext.Provider value={{ userContextuserName, setUserName, isUserLoggenIn: props.isUSerLoggenIn, setUserLoggedIn: props.setUserLoggedIn }}>
       {props.children}
     </UserContext.Provider>
   )

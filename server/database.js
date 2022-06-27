@@ -21,7 +21,7 @@ const getUser = function (email, pool) {
       `, [email]
     )
     .then((result) => {
-      console.log(result.rows)
+      // console.log(result.rows)
       // console.log('result:', result.rows[0].password)
       return result.rows[0]
     })

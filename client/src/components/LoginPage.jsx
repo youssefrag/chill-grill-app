@@ -32,12 +32,12 @@ export default function LoginPage(props) {
       withCredentials: true,
     })
     .then((result) => { 
-      const { email: emailFromServer, name: nameFromServer} = result.data.user
-      console.log(result.data.user)
+      // const { email: emailFromServer, name: nameFromServer} = result.data.user
+      // console.log(result.data.user)
 
       const userName = result.data.user.name
 
-      console.log("userName:", userName)
+      // console.log("userName:", userName)
       
       setUserName(userName)
       setUserLoggedIn(true);

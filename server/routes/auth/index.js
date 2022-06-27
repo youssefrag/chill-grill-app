@@ -31,12 +31,12 @@ module.exports = (db) => {
       password: req.body.password,
     }
 
-    console.log('email:', userData.email)
-    console.log('password:', userData.password)
+    // console.log('email:', userData.email)
+    // console.log('password:', userData.password)
 
     const foundUser = await database.getUser(userData.email, db)
 
-    console.log('found user:', foundUser)
+    // console.log('found user:', foundUser)
     // console.log('found password:', foundPassword)
 
     const foundPassword = foundUser.password
