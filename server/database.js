@@ -26,4 +26,17 @@ const getUsers = function (pool) {
     })
 }
 
-module.exports = { addUser, getUsers }
+const viewDB = function (pool) {
+  return pool
+    .query(
+      `SELECT current_database();`
+    )
+    .then((result) => {
+      console.log('result:', result.rows)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+}
+
+module.exports = { addUser, getUsers, viewDB }

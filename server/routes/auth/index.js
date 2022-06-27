@@ -14,14 +14,13 @@ module.exports = (db) => {
     console.log('email:', userData.email)
     console.log('password:', userData.password)
 
-    await database.getUsers(db)
+    await database.addUser(userData.name, userData.email, userData.password, db)
   
-    // await database.addUser(userData.name, userData.email, userData.password, db)
     // users[userData.email] = userData;
-    // let userToUse = JSON.parse(JSON.stringify(userData));
+    let userToUse = JSON.parse(JSON.stringify(userData));
     // delete userToUse.password;
     //req.session.user = userToUse;
-    // return res.status(200).json({ message : "Register successful.", user: userToUse })
+    return res.status(200).json({ message : "Register successful.", user: userToUse })
   });
 
   return router
