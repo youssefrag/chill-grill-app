@@ -8,6 +8,9 @@ export default function LoginPage(props) {
 
   let navigate = useNavigate();
 
+  const { userContextUserName, setUserName } = useContext(UserContext);
+  const { isUserLoggedIn, setUserLoggedIn } = useContext(UserContext);
+
   const [user, setUser] = useState({
     email:'',
     password:'',
@@ -35,7 +38,10 @@ export default function LoginPage(props) {
       const userName = result.data.user.name
 
       console.log("userName:", userName)
-      // navigate("/login")
+      
+      setUserName(userName)
+      setUserLoggedIn(true);
+
     })
     .catch((error) => {
       console.log(error)

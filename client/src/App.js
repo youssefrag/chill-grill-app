@@ -12,12 +12,12 @@ import RegistrationPage from "./components/RegistrationPage";
 import './App.css';
 
 function App() {
-  const isLoggedIn = Cookies.get('user_email')
+  const isLoggedIn = Cookies.get('user_name')
   const [isUserLoggedIn, setUserLoggedIn] = useState(isLoggedIn);
 
   return (
     <div className="App">
-      <UserContextProvider>
+      <UserContextProvider isUserLoggedIn={isUserLoggedIn} setUserLoggedIn={setUserLoggedIn}>
         <header className="App-header">
           <Navbar />
         </header>

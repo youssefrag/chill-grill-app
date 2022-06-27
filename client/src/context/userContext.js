@@ -2,8 +2,8 @@ import React, { createContext, useState } from "react";
 import Cookies from 'js-cookie';
 
 const defaultState = {
-  email: Cookies.get('user_email'),
-  setUserEmail: () => {},
+  userName: Cookies.get('user_name'),
+  setUserName: () => {},
 }
 
 export const UserContext = createContext(
@@ -11,21 +11,20 @@ export const UserContext = createContext(
 );
 
 export const UserContextProvider = (props) => {
-  const [userContextEmail, setuserContextEmail] = useState(defaultState.email);
+  const [userContextuserName, setUserContextuserName] = useState(defaultState.userName)
 
-  const setUserEmail = (email) => {
-    if (email) {
-      Cookies.set('user_email', email);
+  const setUserName = (userName) => {
+    if (userName) {
+      Cookies.set('user_name', userName)
     } else {
-      Cookies.remove('user_email');
+      Cookies.remove('user_name')
     }
-    setuserContextEmail(email)
+    setUserContextuserName(userName)
   }
 
   return(
-    <UserContext.Provider value={{ userContextEmail, setUserEmail, isUserLoggedIn: props.isUserLoggedIn, setUserLoggedIn: props.setUserLoggedIn }}>
+    <UserContext.Provider value={{ userContextuserName, setUserName, isUserLoggenIn: props.isUSerLoggenIn, setUserLoggenIn: props.setUserLoggenIn }}>
       {props.children}
     </UserContext.Provider>
   )
-
 }
