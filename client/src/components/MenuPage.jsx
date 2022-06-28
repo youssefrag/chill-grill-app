@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { UserContext } from '../context/userContext';
 import { useNavigate } from "react-router-dom";
@@ -7,27 +7,32 @@ import MenuItem from "./MenuItem";
 
 export default function MenuPage(props) {
 
-  let menuItems = []
+  const [menuItems, setMenuItems] = useState([])
 
-  axios.get('http://localhost:8080/api/order/menu', {
-    withCredentials: true,
-  })
-  .then((result) => {
-    // console.log(result.data)
-    menuItems = result.data
-  })
+  useEffect(() => {
+    axios.get('http://localhost:8080/api/order/menu', {
+      withCredentials: true,
+    })
+    .then((result) => {
+      setMenuItems(result.data)
+    })
+  }, [])
+  
+  console.log('menu items:', menuItems)
+  // console.log(menuItems)
 
-
+  // for (let item of menuItems) {
+  //   console.log(item)
+  // }
 
   const menuItemsList = menuItems.map((item) => {
-    
     return(
       <div>
-        {/* <MenuItem
+        <MenuItem
           name={item.name}
           image={item.photo_url}
           price={item.price}
-        /> */}
+        />
       </div>
     )
   })

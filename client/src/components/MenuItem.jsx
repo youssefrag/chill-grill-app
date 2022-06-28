@@ -7,7 +7,8 @@ export default function MenuItem(props) {
   return(
     <>
       <h1>{name}</h1>
-      <img src={image} />
+      <img src='./menu-pictures/cheeseburger.jpeg' />
+      <h1>{image}</h1>
       <h2>{price}$</h2>
     </>
   )
