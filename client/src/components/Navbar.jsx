@@ -9,9 +9,22 @@ import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 
 export default function Navbar(props) {
 
-  const { userContextUserName, setUserName, isUserLoggedIn, setUserLoggenIn} = useContext(UserContext)
+  const { userContextUserName, setUserName } = useContext(UserContext)
 
   let navigate = useNavigate();
+
+  const handleLogout = () => {
+    axios.post('http://localhost:8080/api/auth/logout', {
+      withCredentials: true,
+    })
+    .then(() => {
+      setUserName('')
+      navigate("/login")
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
 
   if (userContextUserName) {
     return(
@@ -31,14 +44,14 @@ export default function Navbar(props) {
           Browse Menu
         </Button>
         <Typography variant="h4">
-          Chill Grill Restaurant
+          Welcome to Chill Grill Restaurant {userContextUserName}
         </Typography>
         <div>
           <Button 
             variant='contained' 
             size='large' 
             style={{ marginLeft: 10, marginRight: 50 }}
-            // onClick={() => navigate("/register")}
+            onClick={handleLogout}
           >
             Logout
           </Button>

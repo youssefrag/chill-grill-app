@@ -9,7 +9,6 @@ export default function LoginPage(props) {
   let navigate = useNavigate();
 
   const { userContextUserName, setUserName } = useContext(UserContext);
-  const { isUserLoggedIn, setUserLoggedIn } = useContext(UserContext);
 
   const [user, setUser] = useState({
     email:'',
@@ -40,7 +39,6 @@ export default function LoginPage(props) {
       // console.log("userName:", userName)
       
       setUserName(userName)
-      setUserLoggedIn(true);
 
     })
     .catch((error) => {

@@ -31,13 +31,7 @@ module.exports = (db) => {
       password: req.body.password,
     }
 
-    // console.log('email:', userData.email)
-    // console.log('password:', userData.password)
-
     const foundUser = await database.getUser(userData.email, db)
-
-    // console.log('found user:', foundUser)
-    // console.log('found password:', foundPassword)
 
     const foundPassword = foundUser.password
 
@@ -49,6 +43,10 @@ module.exports = (db) => {
     } else {
       return res.status(401).json({ message: "Invalid login information" })
     }
+  })
+
+  router.post('/logout', (req, res) => {
+    return res.status(200).json({ message : "Logout successful." })
   })
 
   return router
