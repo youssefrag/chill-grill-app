@@ -31,15 +31,9 @@ export default function LoginPage(props) {
       withCredentials: true,
     })
     .then((result) => { 
-      // const { email: emailFromServer, name: nameFromServer} = result.data.user
-      // console.log(result.data.user)
-
       const userName = result.data.user.name
-
-      // console.log("userName:", userName)
-      
       setUserName(userName)
-
+      navigate("/menu")
     })
     .catch((error) => {
       console.log(error)

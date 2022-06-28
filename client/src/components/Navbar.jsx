@@ -44,7 +44,7 @@ export default function Navbar(props) {
           Browse Menu
         </Button>
         <Typography variant="h4">
-          Welcome to Chill Grill Restaurant {userContextUserName}
+          Welcome {userContextUserName}
         </Typography>
         <div>
           <Button 
