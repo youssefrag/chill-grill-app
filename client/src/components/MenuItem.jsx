@@ -1,4 +1,5 @@
 import React from "react";
+import "./MenuItem.css"
 
 export default function MenuItem(props) {
 
@@ -7,8 +8,7 @@ export default function MenuItem(props) {
   return(
     <>
       <h1>{name}</h1>
-      <img src='./menu-pictures/cheeseburger.jpeg' />
-      <h1>{image}</h1>
+      <img src={image} className="menu-image"/>
       <h2>{price}$</h2>
     </>
   )

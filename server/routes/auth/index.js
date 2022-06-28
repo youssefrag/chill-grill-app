@@ -10,9 +10,6 @@ module.exports = (db) => {
         email: req.body.email,
         password: req.body.password,
     }
-    console.log('name:', userData.name)
-    console.log('email:', userData.email)
-    console.log('password:', userData.password)
 
     await database.addUser(userData.name, userData.email, userData.password, db)
   

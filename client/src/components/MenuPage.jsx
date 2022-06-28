@@ -17,13 +17,6 @@ export default function MenuPage(props) {
       setMenuItems(result.data)
     })
   }, [])
-  
-  console.log('menu items:', menuItems)
-  // console.log(menuItems)
-
-  // for (let item of menuItems) {
-  //   console.log(item)
-  // }
 
   const menuItemsList = menuItems.map((item) => {
     return(
