@@ -43,7 +43,7 @@ export default function LoginPage(props) {
   return(
     <>
       <h1>
-        Login Page!
+        Please login to view menu!
       </h1>
       <form
         id="registration-form"

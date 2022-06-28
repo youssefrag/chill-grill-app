@@ -32,13 +32,16 @@ export default function Navbar(props) {
       color='secondary'
     >
       <Toolbar style={{ width:'100%', display: 'inline-flex', justifyContent: 'space-between' }}>
-        <Button variant='contained' size='large' 
+        <Button 
+          variant='contained' 
+          size='large' 
           style={{ 
             marginLeft: 10, 
             marginRight: 10,
             display: 'inline-flex',
             justifyContent: 'space-between',
           }}
+          onClick={() => navigate("/menu")}
         >
           <RestaurantMenuIcon />
           Browse Menu
@@ -66,13 +69,16 @@ export default function Navbar(props) {
         color='secondary'
       >
         <Toolbar style={{ width:'100%', display: 'inline-flex', justifyContent: 'space-between' }}>
-          <Button variant='contained' size='large' 
+          <Button 
+            variant='contained' 
+            size='large' 
             style={{ 
               marginLeft: 10, 
               marginRight: 10,
               display: 'inline-flex',
               justifyContent: 'space-between',
             }}
+            onClick={() => navigate("/login")}
           >
             <RestaurantMenuIcon />
             Browse Menu

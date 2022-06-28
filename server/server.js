@@ -5,7 +5,7 @@ const BodyParser = require('body-parser')
 const CookieSession = require('cookie-session')
 const PORT = 8080;
 const authRoutes = require('./routes/auth')
-// const orderRoutes = require('./routes/order')
+const orderRoutes = require('./routes/order')
 
 const { Pool } = require('pg');
 const dbParams = require("./lib/db.js")
@@ -28,7 +28,7 @@ App.use(CookieSession({
 }));
 
 App.use('/api/auth', authRoutes(db));
-// App.use('/api/order', orderRoutes);
+App.use('/api/order', orderRoutes(db));
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console

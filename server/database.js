@@ -30,17 +30,17 @@ const getUser = function (email, pool) {
     })
 }
 
-const viewDB = function (pool) {
+const getAllMenuItems = function (pool) {
   return pool
     .query(
-      `SELECT current_database();`
+      `SELECT * FROM menu;`
     )
     .then((result) => {
-      console.log('result:', result.rows)
+      return result.rows
     })
     .catch((err) => {
       console.log(err.message)
     })
 }
 
-module.exports = { addUser, getUser, viewDB }
+module.exports = { addUser, getUser, getAllMenuItems }
