@@ -41,9 +41,6 @@ export default function LoginPage(props) {
       
       setUserName(userName)
       setUserLoggedIn(true);
-      if (isUserLoggedIn === false) {
-        alert('logged in')
-      }
 
     })
     .catch((error) => {

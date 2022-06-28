@@ -11,7 +11,7 @@ export const UserContext = createContext(
 );
 
 export const UserContextProvider = (props) => {
-  const [userContextuserName, setUserContextuserName] = useState(defaultState.userName)
+  const [userContextUserName, setUserContextUserName] = useState(defaultState.userName)
 
   const setUserName = (userName) => {
     if (userName) {
@@ -19,11 +19,11 @@ export const UserContextProvider = (props) => {
     } else {
       Cookies.remove('user_name')
     }
-    setUserContextuserName(userName)
+    setUserContextUserName(userName)
   }
 
   return(
-    <UserContext.Provider value={{ userContextuserName, setUserName, isUserLoggenIn: props.isUSerLoggenIn, setUserLoggedIn: props.setUserLoggedIn }}>
+    <UserContext.Provider value={{ userContextUserName, setUserName, isUserLoggenIn: props.isUSerLoggenIn, setUserLoggedIn: props.setUserLoggedIn }}>
       {props.children}
     </UserContext.Provider>
   )

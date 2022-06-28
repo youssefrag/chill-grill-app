@@ -13,7 +13,7 @@ export default function Navbar(props) {
 
   let navigate = useNavigate();
 
-  if (isUserLoggedIn) {
+  if (userContextUserName) {
     return(
       <AppBar 
       color='secondary'
