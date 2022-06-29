@@ -32,5 +32,5 @@ App.use('/api/order', orderRoutes(db));
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`Express is listening on port ${PORT} so that's pretty good 👍`);
+  console.log(`Express is listening on port ${PORT}`);
 });

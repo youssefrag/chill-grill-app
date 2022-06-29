@@ -47,7 +47,7 @@ const findOrder = function (userId, pool) {
   return pool
     .query(
       `
-        SELECT orders.id FROM orders WHERE urser_id=$1 AND order_placed=false; 
+        SELECT orders.id FROM orders WHERE user_id=$1 AND order_placed=false; 
       `,
       [userId]
     )

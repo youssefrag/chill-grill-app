@@ -13,14 +13,12 @@ export default function MenuPage(props) {
   const { setUserName, userContextUserId, userContextOrderId, setOrderId } = useContext(UserContext);
 
   useEffect(() => {
-    axios.get(`https://localhost:8080/api/order/:${userContextUserId}`, {
+    axios.get(`http://localhost:8080/api/order/${userContextUserId}`, {
       withCredentials: true
     })
     .then((result) => {
-      console.log('orderId:', result.data)
-    })
-    .catch((error) => {
-      console.log(error.message)
+      const orderId = result.data.rows[0].id
+      setOrderId(orderId)
     })
   }, [])
 
