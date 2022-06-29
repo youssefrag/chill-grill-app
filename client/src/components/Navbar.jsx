@@ -10,7 +10,7 @@ import ShoppingCart from '@mui/icons-material/ShoppingCart'
 
 export default function Navbar(props) {
 
-  const { userContextUserName, setUserName, userContextUserId, setUserId  } = useContext(UserContext)
+  const { userContextUserName, setUserName, userContextUserId, setUserId, userContextOrderId, setOrderId  } = useContext(UserContext)
 
   let navigate = useNavigate();
 
@@ -49,7 +49,7 @@ export default function Navbar(props) {
           Browse Menu
         </Button>
         <Typography variant="h4">
-          Welcome {userContextUserName} {userContextUserId}
+          Welcome {userContextUserName} {userContextUserId} {userContextOrderId}
         </Typography>
         <div>
         <Button 

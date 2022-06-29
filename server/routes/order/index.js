@@ -9,5 +9,17 @@ module.exports = (db) => {
     res.status(200).json(menuItems)
   })
 
+  router.get('/ongoing/:userId', async (req, res) => {
+    const userId = req.params.userId
+    const orderId = await database.findOrder(userId, pool)
+    res.status(200).json(orderId)
+  })
+
+  router.post('/newOrder/:userId', async (req, res) => {
+    const userId = req.params.userId
+    const orderId = await database.createOrder(userId, pool)
+    res.status(200).json(orderId)
+  })
+
   return router
 }

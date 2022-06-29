@@ -43,4 +43,30 @@ const getAllMenuItems = function (pool) {
     })
 }
 
-module.exports = { addUser, getUser, getAllMenuItems }
+const findOrder = function (userId, pool) {
+  return pool
+    .query(
+      `
+        SELECT orders.id FROM orders WHERE urser_id=$1 AND order_placed=false; 
+      `,
+      [userId]
+    )
+}
+
+const createOrder = function (userId, pool) {
+  return pool
+    .query(
+      `
+        INSERT INTO orders (user_id, order_placed, order_ready) VALUES ($1, false, false) RETURNING orders.id;
+      `,
+      [userId]
+    )
+    .then((result) => {
+      return result.rows[0]
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+}
+
+module.exports = { addUser, getUser, getAllMenuItems, findOrder, createOrder }
