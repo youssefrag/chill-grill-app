@@ -57,7 +57,7 @@ const createOrder = function (userId, pool) {
   return pool
     .query(
       `
-        INSERT INTO orders (user_id, order_placed, order_ready) VALUES ($1, false, false) RETURNING orders.id;
+        INSERT INTO orders (user_id, order_placed, order_ready) VALUES ($1, false, false);
       `,
       [userId]
     )

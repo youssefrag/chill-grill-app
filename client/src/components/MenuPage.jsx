@@ -12,8 +12,17 @@ export default function MenuPage(props) {
 
   const { setUserName, userContextUserId, userContextOrderId, setOrderId } = useContext(UserContext);
 
+  if (userContextOrderId === null) {
+    axios.post(`http://localhost:8080/api/order/new_order/${userContextUserId}`, {
+      withCredentials: true
+    })
+    .then((result) => {
+      console.log(result)
+    })
+  }
+
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/order/${userContextUserId}`, {
+    axios.get(`http://localhost:8080/api/order/ongoing/${userContextUserId}`, {
       withCredentials: true
     })
     .then((result) => {

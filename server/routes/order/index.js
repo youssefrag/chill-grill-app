@@ -9,18 +9,19 @@ module.exports = (db) => {
     res.status(200).json(menuItems)
   })
 
-  router.get('/:user_id', async (req, res) => {
+  router.get('/ongoing/:user_id', async (req, res) => {
     const userId = req.params.user_id
     console.log('user id:', userId)
     const orderId = await database.findOrder(userId, db)
-    console.log('order id:', orderId.rows[0].id)
+    console.log('order id:', orderId.rows[0])
     res.status(200).json(orderId)
   })
 
-  router.post('/newOrder/:userId', async (req, res) => {
-    const userId = req.params.userId
-    const orderId = await database.createOrder(userId, pool)
-    res.status(200).json(orderId)
+  router.post('new_order/:user_id', async (req, res) => {
+    const userId = req.params.user_id
+    const orderId = await database.createOrder(userId, db)
+    console.log('order_id:', orderId)
+    // res.status(200).json(orderId)
   })
 
   return router

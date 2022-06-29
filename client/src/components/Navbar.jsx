@@ -21,6 +21,7 @@ export default function Navbar(props) {
     .then(() => {
       setUserId(null)
       setUserName('')
+      setOrderId(null)
       navigate("/login")
     })
     .catch((error) => {
