@@ -8,7 +8,7 @@ export default function LoginPage(props) {
 
   let navigate = useNavigate();
 
-  const { userContextUserName, setUserName } = useContext(UserContext);
+  const { userContextUserName, setUserName, userContextUserId, setUserId } = useContext(UserContext);
 
   const [user, setUser] = useState({
     email:'',
@@ -31,8 +31,11 @@ export default function LoginPage(props) {
       withCredentials: true,
     })
     .then((result) => { 
+      // console.log('id:', result.data.user.id)
+      const userId = result.data.user.id
       const userName = result.data.user.name
       setUserName(userName)
+      setUserId(userId)
       navigate("/menu")
     })
     .catch((error) => {

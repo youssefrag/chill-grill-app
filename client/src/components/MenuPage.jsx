@@ -3,6 +3,7 @@ import axios from "axios";
 import { UserContext } from '../context/userContext';
 import { useNavigate } from "react-router-dom";
 
+import { Button } from '@mui/material';
 import MenuItem from "./MenuItem";
 
 export default function MenuPage(props) {
@@ -26,6 +27,12 @@ export default function MenuPage(props) {
           image={item.photo_url}
           price={item.price}
         />
+        <Button
+          variant='contained' 
+          size='large' 
+        >
+          Add to cart!
+        </Button>
       </div>
     )
   })

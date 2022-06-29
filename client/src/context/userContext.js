@@ -2,8 +2,8 @@ import React, { createContext, useState } from "react";
 import Cookies from 'js-cookie';
 
 const defaultState = {
-  userName: Cookies.get('user_name'),
   setUserName: () => {},
+  setUserId: () => {}
 }
 
 export const UserContext = createContext(
@@ -14,11 +14,6 @@ export const UserContextProvider = (props) => {
   const [userContextUserName, setUserContextUserName] = useState(defaultState.userName)
 
   const setUserName = (userName) => {
-    if (userName) {
-      Cookies.set('user_name', userName)
-    } else {
-      Cookies.remove('user_name')
-    }
     setUserContextUserName(userName)
   }
 

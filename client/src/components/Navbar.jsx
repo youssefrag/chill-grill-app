@@ -6,10 +6,11 @@ import { UserContext } from "../context/userContext";
 
 import {Button, Typography, AppBar, Toolbar, Stack } from '@mui/material';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
+import ShoppingCart from '@mui/icons-material/ShoppingCart'
 
 export default function Navbar(props) {
 
-  const { userContextUserName, setUserName } = useContext(UserContext)
+  const { userContextUserName, setUserName, userContextUserId, setUserId  } = useContext(UserContext)
 
   let navigate = useNavigate();
 
@@ -18,6 +19,7 @@ export default function Navbar(props) {
       withCredentials: true,
     })
     .then(() => {
+      setUserId(null)
       setUserName('')
       navigate("/login")
     })
@@ -50,6 +52,14 @@ export default function Navbar(props) {
           Welcome {userContextUserName}
         </Typography>
         <div>
+        <Button 
+            variant='contained' 
+            size='large' 
+            style={{ marginLeft: 10, marginRight: 50 }}
+            // onClick={handleLogout}
+          >
+            <ShoppingCart />
+          </Button>
           <Button 
             variant='contained' 
             size='large' 
