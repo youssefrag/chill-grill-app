@@ -10,6 +10,20 @@ export default function MenuPage(props) {
 
   const [menuItems, setMenuItems] = useState([])
 
+  const { setUserName, userContextUserId, userContextOrderId, setOrderId } = useContext(UserContext);
+
+  useEffect(() => {
+    axios.get(`https://localhost:8080/api/order/:${userContextUserId}`, {
+      withCredentials: true
+    })
+    .then((result) => {
+      console.log('orderId:', result.data)
+    })
+    .catch((error) => {
+      console.log(error.message)
+    })
+  }, [])
+
   useEffect(() => {
     axios.get('http://localhost:8080/api/order/menu', {
       withCredentials: true,

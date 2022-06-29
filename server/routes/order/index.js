@@ -9,8 +9,9 @@ module.exports = (db) => {
     res.status(200).json(menuItems)
   })
 
-  router.get('/ongoing/:userId', async (req, res) => {
+  router.get('/:userId', async (req, res) => {
     const userId = req.params.userId
+    console.log('user id:', userId)
     const orderId = await database.findOrder(userId, pool)
     res.status(200).json(orderId)
   })
