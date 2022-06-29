@@ -49,7 +49,7 @@ export default function Navbar(props) {
           Browse Menu
         </Button>
         <Typography variant="h4">
-          Welcome {userContextUserName}
+          Welcome {userContextUserName} {userContextUserId}
         </Typography>
         <div>
         <Button 
