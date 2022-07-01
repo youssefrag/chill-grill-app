@@ -18,10 +18,10 @@ module.exports = (db) => {
   })
 
   router.post('/new_order/:user_id', async (req, res) => {
-    console.log('new order route hit!')
+    // console.log('new order route hit!')
     const userId = req.params.user_id
     const orderId = await database.createOrder(userId, db)
-    console.log('order_id:', orderId.id)
+    // console.log('order_id:', orderId.id)
     res.status(200).json(orderId)
   })
 

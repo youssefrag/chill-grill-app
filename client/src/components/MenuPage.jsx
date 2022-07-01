@@ -12,13 +12,13 @@ export default function MenuPage(props) {
 
   const { setUserName, userContextUserId, userContextOrderId, setOrderId } = useContext(UserContext);
 
-  if (userContextOrderId === null) {
-    console.log('creating new order')
-    axios.post(`http://localhost:8080/api/order/new_order/${userContextUserId}`, {
+  const createNewOrder = (userId) => {
+    // console.log('creating new order')
+    axios.post(`http://localhost:8080/api/order/new_order/${userId}`, {
       withCredentials: true
     })
     .then((result) => {
-      console.log('order id:', result.data.id)
+      // console.log('created order id:', result.data.id)
       setOrderId(result.data.id)
     })
   }
@@ -28,8 +28,13 @@ export default function MenuPage(props) {
       withCredentials: true
     })
     .then((result) => {
-      const orderId = result.data.rows[0].id
-      setOrderId(orderId)
+      const order = result.data.rows[0]
+      // console.log('order:', order)
+      if (order) {
+        setOrderId(order.id)
+      } else {
+        createNewOrder(userContextUserId)
+      }
     })
   }, [])
 
