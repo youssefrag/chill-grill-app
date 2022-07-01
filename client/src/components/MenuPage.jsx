@@ -18,7 +18,8 @@ export default function MenuPage(props) {
       withCredentials: true
     })
     .then((result) => {
-      console.log(result)
+      console.log('order id:', result.data.id)
+      setOrderId(result.data.id)
     })
   }
 
