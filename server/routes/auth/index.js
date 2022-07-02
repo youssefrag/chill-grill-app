@@ -13,10 +13,8 @@ module.exports = (db) => {
 
     await database.addUser(userData.name, userData.email, userData.password, db)
   
-    // users[userData.email] = userData;
     let userToUse = JSON.parse(JSON.stringify(userData));
     delete userToUse.password;
-    // req.session.user = userToUse.name;
     return res.status(200).json({ message : "Register successful.", user: userToUse })
   });
 
