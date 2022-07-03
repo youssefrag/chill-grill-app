@@ -51,16 +51,11 @@ export default function MenuPage(props) {
     return(
       <div>
         <MenuItem
+          id={item.id}
           name={item.name}
           image={item.photo_url}
           price={item.price}
         />
-        <Button
-          variant='contained' 
-          size='large' 
-        >
-          Add to cart!
-        </Button>
       </div>
     )
   })

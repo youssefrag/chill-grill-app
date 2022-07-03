@@ -4,13 +4,20 @@ import "./MenuItem.css"
 
 export default function MenuItem(props) {
 
-  const { name, image, price } = props
+  const {id, name, image, price } = props
 
   return(
     <>
       <h1>{name}</h1>
       <img src={image} className="menu-image"/>
       <h2>{price}$</h2>
+      <h2>item id: {id}</h2>
+      <Button
+        variant='contained' 
+        size='large' 
+      >
+        Add to cart!
+      </Button>
     </>
   )
 }
