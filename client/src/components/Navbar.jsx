@@ -57,7 +57,7 @@ export default function Navbar(props) {
             variant='contained' 
             size='large' 
             style={{ marginLeft: 10, marginRight: 50 }}
-            // onClick={handleLogout}
+            onClick={() => navigate("/cart")}
           >
             <ShoppingCart />
           </Button>

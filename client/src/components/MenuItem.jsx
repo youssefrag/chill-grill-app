@@ -3,7 +3,6 @@ import {Button, Typography } from '@mui/material';
 import "./MenuItem.css"
 import axios from "axios";
 import { UserContext } from '../context/userContext';
-// import { useContext } from 'react';
 
 export default function MenuItem(props) {
 

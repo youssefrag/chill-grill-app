@@ -29,6 +29,7 @@ module.exports = (db) => {
     const orderId = req.params.order_id
     const itemId = req.params.item_id
     await database.addToCart(orderId, itemId, db)
+    res.status(200)
   })
 
   return router
