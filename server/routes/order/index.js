@@ -25,5 +25,12 @@ module.exports = (db) => {
     res.status(200).json(orderId)
   })
 
+  router.post('/add_item/:order_id/:item_id', async (req, res) => {
+    const orderId = req.params.order_id
+    const itemId = req.params.item_id
+    console.log('order id:', orderId)
+    console.log('item id:', itemId)
+  })
+
   return router
 }

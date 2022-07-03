@@ -4,17 +4,18 @@ import "./MenuItem.css"
 
 export default function MenuItem(props) {
 
-  const {id, name, image, price } = props
+  const { name, image, price } = props
+  const itemId = props.id
 
   return(
     <>
       <h1>{name}</h1>
       <img src={image} className="menu-image"/>
       <h2>{price}$</h2>
-      <h2>item id: {id}</h2>
+      <h2>item id: {itemId}</h2>
       <Button
         variant='contained' 
-        size='large' 
+        size='large'
       >
         Add to cart!
       </Button>
