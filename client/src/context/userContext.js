@@ -5,7 +5,7 @@ const defaultState = {
   userName: '',
   userId: null,
   orderId: null,
-  cart: {},
+  cart: {1: 0, 2 :0, 3: 0, 4: 0, 5: 0},
   setUserName: () => {},
   setUserId: () => {},
   setOrderId: () => {},
