@@ -17,12 +17,12 @@ export default function MenuItem(props) {
 
   const addToUserContextCart = () => {
 
-    console.log(userContextCart)
-    console.log('item id:', itemId, 'quantity:', userContextCart[itemId])
-    const newAmount = userContextCart[itemId] + 1
-    console.log('new amount:', newAmount)
-    // setCart(...userContextCart, userContextCart[itemId]: userContextCart[itemId]++)
-  
+    const newAmountAfterAdding = userContextCart[itemId] + 1
+    setCart(prev => ({
+      ...userContextCart, [itemId]: newAmountAfterAdding
+    }))
+    // setCart(prev => {(userContextCart[itemId] = userContextCart[itemId]++))
+    // console.log('after adding:', userContextCart)
   }
 
   return(
