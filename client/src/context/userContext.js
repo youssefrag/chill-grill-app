@@ -5,9 +5,11 @@ const defaultState = {
   userName: '',
   userId: null,
   orderId: null,
+  cart: {},
   setUserName: () => {},
   setUserId: () => {},
   setOrderId: () => {},
+  setCart: () => {},
 }
 
 export const UserContext = createContext(
@@ -18,6 +20,7 @@ export const UserContextProvider = (props) => {
   const [userContextUserName, setUserContextUserName] = useState(defaultState.userName)
   const [userContextUserId, setUserContextUserId] = useState(defaultState.userId)
   const [userContextOrderId, setUserContextOrderId] = useState(defaultState.orderId)
+  const [userContextCart, setUserContextCart] = useState(defaultState.cart)
 
   const setUserName = (userName) => {
     setUserContextUserName(userName)
@@ -31,8 +34,12 @@ export const UserContextProvider = (props) => {
     setUserContextOrderId(orderId)
   }
 
+  const setCart = (cart) => {
+    setUserContextCart(cart)
+  }
+
   return(
-    <UserContext.Provider value={{ userContextUserName, setUserName, userContextUserId, setUserId, userContextOrderId, setOrderId }}>
+    <UserContext.Provider value={{ userContextUserName, setUserName, userContextUserId, setUserId, userContextOrderId, setOrderId, userContextCart, setCart }}>
       {props.children}
     </UserContext.Provider>
   )
