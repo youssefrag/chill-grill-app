@@ -28,8 +28,7 @@ module.exports = (db) => {
   router.post('/add_item/:order_id/:item_id', async (req, res) => {
     const orderId = req.params.order_id
     const itemId = req.params.item_id
-    console.log('order id:', orderId)
-    console.log('item id:', itemId)
+    await database.addToCart(orderId, itemId, db)
   })
 
   return router

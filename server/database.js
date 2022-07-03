@@ -70,4 +70,20 @@ const createOrder = function (userId, pool) {
     })
 }
 
-module.exports = { addUser, getUser, getAllMenuItems, findOrder, createOrder }
+const addToCart = function (orderId, itemId, pool) {
+  return pool
+    .query(
+      `
+        INSERT INTO order_items (order_id, menu_id) VALUES ($1, $2);
+      `,
+      [orderId, itemId]
+    )
+    .then((result) => {
+      return result
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+}
+
+module.exports = { addUser, getUser, getAllMenuItems, findOrder, createOrder, addToCart }
