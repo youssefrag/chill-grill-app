@@ -33,11 +33,15 @@ export default function Cart(props) {
 
   let totalPrice = 0
 
+  let itemsCartQuantity = 0
+
   for (let i = 0; i < 5; i++) {
     const quantity = userContextCart[userContextMenuItems[i].id]
+    itemsCartQuantity += quantity
     cartArray.push({name: userContextMenuItems[i].name, id: userContextMenuItems[i].id, quant: quantity, price: userContextMenuItems[i].price})
     totalPrice += quantity * userContextMenuItems[i].price
   }
+  console.log('quantity:', itemsCartQuantity)
 
   const renderCart = cartArray.map((item) => {
     if (item.quant > 0) {
@@ -77,13 +81,21 @@ export default function Cart(props) {
     }
   })
 
-  return(
-    <div>
-      {renderCart}
-      <h1>total price {totalPrice}</h1>
-    </div>
-  )
 
+  if (itemsCartQuantity === 0) {
+    return(
+      <h1>
+        cart is empty!
+      </h1>
+    )
+  } else {
+    return(
+      <div>
+        {renderCart}
+        <h1>total price {totalPrice}</h1>
+      </div>
+    )
+  }
 
   
 }
