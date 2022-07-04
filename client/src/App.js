@@ -15,9 +15,12 @@ import './App.css';
 
 function App() {
 
+  const isLoggedIn = Cookies.get('user_id') && Cookies.get('chillgrillsession')
+  const [isUserLoggedIn, setUserLoggedIn] = useState(isLoggedIn);
+
   return (
     <div className="App">
-      <UserContextProvider>
+      <UserContextProvider isUserLoggedIn={isUserLoggedIn} setUserLoggedIn={setUserLoggedIn}>
         <header className="App-header">
           <Navbar />
         </header>
@@ -25,8 +28,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/menu" element={<MenuPage />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/menu" element={ (isUserLoggedIn) ? <MenuPage /> : <LoginPage />} />
+          <Route path="/cart" element={ (isUserLoggedIn) ? <Cart /> : <LoginPage />} />
         </Routes>
       </UserContextProvider>
     </div>

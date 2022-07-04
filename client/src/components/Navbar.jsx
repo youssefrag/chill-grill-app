@@ -10,7 +10,7 @@ import ShoppingCart from '@mui/icons-material/ShoppingCart'
 
 export default function Navbar(props) {
 
-  const { userContextUserName, setUserName, userContextUserId, setUserId, userContextOrderId, setOrderId  } = useContext(UserContext)
+  const { userContextUserName, setUserName, userContextUserId, setUserId, userContextOrderId, setOrderId, isUserLoggedIn, setUserLoggedIn  } = useContext(UserContext)
 
   let navigate = useNavigate();
 
@@ -22,6 +22,7 @@ export default function Navbar(props) {
       setUserId(null)
       setUserName('')
       setOrderId(null)
+      setUserLoggedIn(false)
       navigate("/login")
     })
     .catch((error) => {
@@ -29,7 +30,7 @@ export default function Navbar(props) {
     })
   }
 
-  if (userContextUserName) {
+  if (isUserLoggedIn) {
     return(
       <AppBar 
       color='secondary'

@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import Cookies from 'js-cookie';
 import axios from "axios";
 import { UserContext } from '../context/userContext';
 import { useNavigate } from "react-router-dom";
@@ -8,7 +9,7 @@ export default function LoginPage(props) {
 
   let navigate = useNavigate();
 
-  const { userContextUserName, setUserName, userContextUserId, setUserId, userContextOrderId, setOrderId } = useContext(UserContext);
+  const { userContextUserName, setUserName, userContextUserId, setUserId, userContextOrderId, setOrderId, isUserLoggedIn, setUserLoggedIn } = useContext(UserContext);
 
   const [user, setUser] = useState({
     email:'',
@@ -36,6 +37,7 @@ export default function LoginPage(props) {
       const userName = result.data.user.name
       setUserName(userName)
       setUserId(userId)
+      setUserLoggedIn(true)
       // updateOrderId(userContextUserId)
       navigate("/menu")
     })

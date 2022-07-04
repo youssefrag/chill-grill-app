@@ -21,8 +21,6 @@ export default function MenuItem(props) {
     setCart(prev => ({
       ...userContextCart, [itemId]: newAmountAfterAdding
     }))
-    // setCart(prev => {(userContextCart[itemId] = userContextCart[itemId]++))
-    // console.log('after adding:', userContextCart)
   }
 
   return(
