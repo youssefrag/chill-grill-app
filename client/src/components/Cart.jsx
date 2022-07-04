@@ -31,9 +31,12 @@ export default function Cart(props) {
 
   const cartArray = []
 
+  let totalPrice = 0
+
   for (let i = 0; i < 5; i++) {
     const quantity = userContextCart[userContextMenuItems[i].id]
     cartArray.push({name: userContextMenuItems[i].name, id: userContextMenuItems[i].id, quant: quantity, price: userContextMenuItems[i].price})
+    totalPrice += quantity * userContextMenuItems[i].price
   }
 
   const renderCart = cartArray.map((item) => {
@@ -77,6 +80,7 @@ export default function Cart(props) {
   return(
     <div>
       {renderCart}
+      <h1>total price {totalPrice}</h1>
     </div>
   )
 
