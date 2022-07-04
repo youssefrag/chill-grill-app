@@ -5,19 +5,31 @@ import { UserContext } from '../context/userContext';
 
 export default function Cart(props) {
 
-  const { userContextCart, setCart } = useContext(UserContext);
+  const { userContextCart, setCart, userContextMenuItems, setMenuItems } = useContext(UserContext);
 
-  // console.log(userContextCart)
- 
-  for (let item in userContextCart) {
-    console.log(userContextCart[item])
+  const cartArray = []
+
+  for (let i = 0; i < 5; i++) {
+    const quantity = userContextCart[userContextMenuItems[i].id]
+    cartArray.push({name: userContextMenuItems[i].name, id: userContextMenuItems[i].id, quant: quantity})
   }
 
-  return(
-    <>
+  const renderCart = cartArray.map((item) => {
+    return(
       <h1>
-        Cart!
+        name: {item.name}<br />
+        item id: {item.id}<br />
+        quantity: {item.quant}
       </h1>
-    </>
+    )
+  })
+
+  return(
+    <div>
+      {renderCart}
+    </div>
   )
+
+
+  
 }
