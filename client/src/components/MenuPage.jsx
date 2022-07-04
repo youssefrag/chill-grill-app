@@ -8,17 +8,14 @@ import MenuItem from "./MenuItem";
 
 export default function MenuPage(props) {
 
-  const [menuItems, setMenuItems] = useState([])
 
-  const { setUserName, userContextUserId, userContextOrderId, setOrderId } = useContext(UserContext);
+  const { setUserName, userContextUserId, userContextOrderId, setOrderId, userContextMenuItems, setMenuItems } = useContext(UserContext);
 
   const createNewOrder = (userId) => {
-    // console.log('creating new order')
     axios.post(`http://localhost:8080/api/order/new_order/${userId}`, {
       withCredentials: true
     })
     .then((result) => {
-      // console.log('created order id:', result.data.id)
       setOrderId(result.data.id)
     })
   }
@@ -44,10 +41,11 @@ export default function MenuPage(props) {
     })
     .then((result) => {
       setMenuItems(result.data)
+
     })
   }, [])
 
-  const menuItemsList = menuItems.map((item) => {
+  const menuItemsList = userContextMenuItems.map((item) => {
     return(
       <div>
         <MenuItem
