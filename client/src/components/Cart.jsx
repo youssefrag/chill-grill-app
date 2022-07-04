@@ -7,21 +7,71 @@ export default function Cart(props) {
 
   const { userContextCart, setCart, userContextMenuItems, setMenuItems } = useContext(UserContext);
 
+  const addToUserContextCart = (itemId) => {
+
+    const newAmountAfterAdding = userContextCart[itemId] + 1
+    setCart(prev => ({
+      ...userContextCart, [itemId]: newAmountAfterAdding
+    }))
+  }
+
+  const decreaseFromUserContextCart = (itemId) => {
+    const newAmountAfterDecreasing = userContextCart[itemId] - 1
+    setCart(prev => ({
+      ...userContextCart, [itemId]: newAmountAfterDecreasing
+    }))
+  }
+
+  const clearItemFromCart = (itemId) => {
+    const newAmount = 0
+    setCart(prev => ({
+      ...userContextCart, [itemId]: newAmount
+    }))
+  }
+
   const cartArray = []
 
   for (let i = 0; i < 5; i++) {
     const quantity = userContextCart[userContextMenuItems[i].id]
-    cartArray.push({name: userContextMenuItems[i].name, id: userContextMenuItems[i].id, quant: quantity})
+    cartArray.push({name: userContextMenuItems[i].name, id: userContextMenuItems[i].id, quant: quantity, price: userContextMenuItems[i].price})
   }
 
   const renderCart = cartArray.map((item) => {
-    return(
-      <h1>
-        name: {item.name}<br />
-        item id: {item.id}<br />
-        quantity: {item.quant}
-      </h1>
-    )
+    if (item.quant > 0) {
+
+      return(
+        <>
+          <h1>
+            name: {item.name}<br />
+            item id: {item.id}<br />
+            quantity: {item.quant}<br />
+            item price: {item.price}<br />
+            price: {item.quant} X {item.price} = {item.quant * item.price}
+          </h1>
+          <Button
+            variant='contained' 
+            size='large'
+            onClick={() => addToUserContextCart(item.id)}
+          >
+            Add one
+          </Button>
+          <Button
+            variant='contained' 
+            size='large'
+            onClick={() => decreaseFromUserContextCart(item.id)}
+          >
+            Remove one
+          </Button><br />
+          <Button
+            variant='contained' 
+            size='large'
+            onClick={() => clearItemFromCart(item.id)}
+          >
+            Clear Item
+          </Button>
+        </>
+      )
+    }
   })
 
   return(
