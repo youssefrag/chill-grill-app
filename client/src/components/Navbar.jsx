@@ -10,7 +10,14 @@ import ShoppingCart from '@mui/icons-material/ShoppingCart'
 
 export default function Navbar(props) {
 
-  const { userContextUserName, setUserName, userContextUserId, setUserId, userContextOrderId, setOrderId, isUserLoggedIn, setUserLoggedIn  } = useContext(UserContext)
+  const { userContextUserName, setUserName, userContextUserId, setUserId, userContextOrderId, setOrderId, isUserLoggedIn, setUserLoggedIn, userContextCart, setCart, userContextMenuItems } = useContext(UserContext)
+
+  let itemsCartQuantity = 0
+
+  for (let i = 0; i < 5; i++) {
+    const quantity = userContextCart[userContextMenuItems[i].id]
+    itemsCartQuantity += quantity
+  }
 
   let navigate = useNavigate();
 
@@ -60,7 +67,7 @@ export default function Navbar(props) {
             style={{ marginLeft: 10, marginRight: 50 }}
             onClick={() => navigate("/cart")}
           >
-            <ShoppingCart />
+            <ShoppingCart /> {itemsCartQuantity}
           </Button>
           <Button 
             variant='contained' 
