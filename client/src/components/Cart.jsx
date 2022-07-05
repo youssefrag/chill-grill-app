@@ -56,7 +56,6 @@ export default function Cart(props) {
     cartArray.push({name: userContextMenuItems[i].name, id: userContextMenuItems[i].id, quant: quantity, price: userContextMenuItems[i].price})
     totalPrice += quantity * userContextMenuItems[i].price
   }
-  console.log('quantity:', itemsCartQuantity)
 
   const renderCart = cartArray.map((item) => {
     if (item.quant > 0) {

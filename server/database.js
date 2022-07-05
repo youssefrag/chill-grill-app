@@ -88,4 +88,12 @@ const placeOrder = function(orderId, pool) {
     )
 }
 
-module.exports = { addUser, getUser, getAllMenuItems, findOrder, createOrder, addOrderItems, placeOrder }
+const orderReady = function(orderId, pool) {
+  return pool
+    .query(
+      `UPDATE orders SET order_ready = true WHERE orders.id = $1;`,
+      [orderId]
+    )
+}
+
+module.exports = { addUser, getUser, getAllMenuItems, findOrder, createOrder, addOrderItems, placeOrder, orderReady }

@@ -38,6 +38,9 @@ module.exports = (db) => {
     const orderId = req.params.order_id
     await database.addOrderItems(cart, orderId, db)
     await database.placeOrder(orderId, db)
+    setTimeout(function() {
+      database.orderReady(orderId, db)
+    }, 15 * 60 * 1000)
     res.status(200)
   })
 
