@@ -32,5 +32,10 @@ module.exports = (db) => {
     res.status(200)
   })
 
+  router.post('/submit/:order_id', async (req,res) => {
+    // console.log('submit route was hit!')
+    console.log(req.body)
+  })
+
   return router
 }

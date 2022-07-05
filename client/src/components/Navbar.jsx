@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 
 import axios from 'axios';
@@ -7,20 +7,26 @@ import { UserContext } from "../context/userContext";
 import {Button, Typography, AppBar, Toolbar, Stack } from '@mui/material';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import ShoppingCart from '@mui/icons-material/ShoppingCart'
+import { useEffect } from "react";
 
 export default function Navbar(props) {
 
   const { userContextUserName, setUserName, userContextUserId, setUserId, userContextOrderId, setOrderId, isUserLoggedIn, setUserLoggedIn, userContextCart, setCart, userContextMenuItems } = useContext(UserContext)
 
-  let itemsCartQuantity = 0
+  const [itemsCartQuantity, setItemsCartQuantity] = useState(0)
 
+  let itemsInCart = 0;
 
-  if (isUserLoggedIn) {
-    for (let i = 0; i < 5; i++) {
-      const quantity = userContextCart[userContextMenuItems[i].id]
-      itemsCartQuantity += quantity
+  useEffect(() => {
+    if (isUserLoggedIn) {
+      for (let i = 0; i < 5; i++) {
+        const quantity = userContextCart[userContextMenuItems[i].id]
+        itemsInCart += quantity
+        setItemsCartQuantity(itemsInCart)
+      }
     }
-  }
+  }, [userContextCart])
+
 
   let navigate = useNavigate();
 

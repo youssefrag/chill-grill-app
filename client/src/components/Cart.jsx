@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 import {Button, Typography } from '@mui/material';
 import axios from "axios";
 import { UserContext } from '../context/userContext';
 
 export default function Cart(props) {
 
-  const { userContextCart, setCart, userContextMenuItems, setMenuItems } = useContext(UserContext);
+  const { userContextCart, setCart, userContextMenuItems, setMenuItems, userContextOrderId } = useContext(UserContext);
+
+  let navigate = useNavigate();
 
   const addToUserContextCart = (itemId) => {
 
@@ -27,6 +30,18 @@ export default function Cart(props) {
     setCart(prev => ({
       ...userContextCart, [itemId]: newAmount
     }))
+  }
+
+  const submitOrder = (orderId) => {
+    axios.post(`http://localhost:8080/api/order/submit/${orderId}`, userContextCart, {
+      withCredentials: true,
+    })
+    .then((result) => {
+      console.log(result)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
   }
 
   const cartArray = []
@@ -82,17 +97,33 @@ export default function Cart(props) {
   })
 
 
-  if (itemsCartQuantity === 0) {
+  if (totalPrice === 0) {
     return(
-      <h1>
-        cart is empty!
-      </h1>
+      <>
+        <h1>
+          cart is empty!
+        </h1>
+        <Button
+          variant='contained' 
+          size='large'
+          onClick={() => navigate('/menu')}
+        >
+          Go to menu
+        </Button>
+      </>
     )
   } else {
     return(
       <div>
         {renderCart}
         <h1>total price {totalPrice}</h1>
+        <Button
+          variant='contained' 
+          size='large'
+          onClick={() => submitOrder(userContextOrderId)}
+        >
+          Submit Order
+        </Button>
       </div>
     )
   }
