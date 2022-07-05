@@ -119,7 +119,8 @@ export default function Cart(props) {
         <Button
           variant='contained' 
           size='large'
-          onClick={() => submitOrder(userContextOrderId)}
+          onClick={submitOrder(userContextOrderId)}
+          onClick={() => navigate('/submit')}
         >
           Submit Order
         </Button>

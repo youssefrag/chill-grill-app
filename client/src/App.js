@@ -10,6 +10,7 @@ import HomePage from "./components/HomePage";
 import RegistrationPage from "./components/RegistrationPage";
 import MenuPage from "./components/MenuPage";
 import Cart from "./components/Cart"
+import SubmitPage from "./components/SubmitPage";
 
 import './App.css';
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/menu" element={ (isUserLoggedIn) ? <MenuPage /> : <LoginPage />} />
           <Route path="/cart" element={ (isUserLoggedIn) ? <Cart /> : <LoginPage />} />
+          <Route path="/submit" element={<SubmitPage />} />
         </Routes>
       </UserContextProvider>
     </div>
