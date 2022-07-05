@@ -74,11 +74,18 @@ const createOrder = function (userId, pool) {
 
 const addOrderItems = function(cart, orderId, pool) {
   const cartQuery = utils.createOrderQuery(cart, orderId).toString()
-  console.log(cartQuery)
   return pool
     .query(
       `${cartQuery}`
     )
 }
 
-module.exports = { addUser, getUser, getAllMenuItems, findOrder, createOrder, addOrderItems }
+const placeOrder = function(orderId, pool) {
+  return pool
+    .query(
+      `UPDATE orders SET order_placed = true WHERE orders.id = $1;`,
+      [orderId]
+    )
+}
+
+module.exports = { addUser, getUser, getAllMenuItems, findOrder, createOrder, addOrderItems, placeOrder }

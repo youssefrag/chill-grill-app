@@ -37,6 +37,7 @@ module.exports = (db) => {
     const cart = req.body
     const orderId = req.params.order_id
     await database.addOrderItems(cart, orderId, db)
+    await database.placeOrder(orderId, db)
     res.status(200)
   })
 
