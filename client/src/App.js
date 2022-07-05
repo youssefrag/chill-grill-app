@@ -26,7 +26,7 @@ function App() {
           <Navbar />
         </header>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={ (isUserLoggedIn) ? <MenuPage /> : <LoginPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/menu" element={ (isUserLoggedIn) ? <MenuPage /> : <LoginPage />} />
