@@ -14,9 +14,12 @@ export default function Navbar(props) {
 
   let itemsCartQuantity = 0
 
-  for (let i = 0; i < 5; i++) {
-    const quantity = userContextCart[userContextMenuItems[i].id]
-    itemsCartQuantity += quantity
+
+  if (isUserLoggedIn) {
+    for (let i = 0; i < 5; i++) {
+      const quantity = userContextCart[userContextMenuItems[i].id]
+      itemsCartQuantity += quantity
+    }
   }
 
   let navigate = useNavigate();
