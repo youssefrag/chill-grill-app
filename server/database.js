@@ -1,3 +1,5 @@
+const utils = require('./utils/helpers')
+
 const addUser = function (name, email, password, pool) {
   return pool
     .query(
@@ -70,20 +72,13 @@ const createOrder = function (userId, pool) {
     })
 }
 
-const addToCart = function (orderId, itemId, pool) {
+const addOrderItems = function(cart, orderId, pool) {
+  const cartQuery = utils.createOrderQuery(cart, orderId).toString()
+  console.log(cartQuery)
   return pool
     .query(
-      `
-        INSERT INTO order_items (order_id, menu_id) VALUES ($1, $2);
-      `,
-      [orderId, itemId]
+      `${cartQuery}`
     )
-    .then((result) => {
-      return result
-    })
-    .catch((err) => {
-      console.log(err.message)
-    })
 }
 
-module.exports = { addUser, getUser, getAllMenuItems, findOrder, createOrder, addToCart }
+module.exports = { addUser, getUser, getAllMenuItems, findOrder, createOrder, addOrderItems }
