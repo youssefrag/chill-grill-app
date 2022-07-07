@@ -1,17 +1,15 @@
 import React, { useContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import {Button, Typography, Box, IconButton } from '@mui/material';
+import {Button, Typography, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from "axios";
 import { UserContext } from '../context/userContext';
 import { makeStyles } from "@mui/styles";
-import { grey } from "@mui/material/colors";
 
 const useStyles = makeStyles({
   root: {
     marginLeft: '20px',
     marginRight: '20px',
-    background: 'grey',
   },
   addRemoveBtn: {
     borderRadius: 28,
@@ -20,13 +18,20 @@ const useStyles = makeStyles({
     alignSelf: 'center',
     marginLeft: 20,
   },
+  totalPrice: {
+    marginTop: '30px',
+  },
+  goToMenuBtn: {
+    marginTop: 40,
+  },
+  cartEmptyMsg: {
+    marginTop: 100,
+  }
 });
 
 export default function Cart(props) {
 
   const classes = useStyles();
-
-  console.log('classes:', classes)
 
   const { userContextCart, setCart, userContextMenuItems, setMenuItems, userContextOrderId } = useContext(UserContext);
 
@@ -142,23 +147,39 @@ export default function Cart(props) {
   if (totalPrice === 0) {
     return(
       <>
-        <h1>
-          cart is empty!
-        </h1>
-        <Button
-          variant='contained' 
-          size='large'
-          onClick={() => navigate('/menu')}
+        <Typography
+          className={classes.cartEmptyMsg}
+          vartiant='h1'
+          fontSize={50}
+          align="center"
         >
-          Go to menu
-        </Button>
+          Cart is empty
+        </Typography>
+        <Typography
+          align="center"
+        >
+          <Button
+            className={classes.goToMenuBtn}
+            variant='contained' 
+            size='large'
+            onClick={() => navigate('/menu')}
+          >
+            Go to menu
+          </Button>
+        </Typography>
       </>
     )
   } else {
     return(
-      <div>
+      <div className={classes.root}>
         {renderCart}
-        <h1>total price {totalPrice}</h1>
+        <Typography
+          vartiant='h1'
+          fontSize={60}
+          align="right"
+        >
+          Total price: {totalPrice}$
+        </Typography>
         <Button
           variant='contained' 
           size='large'

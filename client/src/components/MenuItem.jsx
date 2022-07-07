@@ -1,19 +1,26 @@
 import React, { useState, useEffect, useContext } from "react";
 import {Button, Typography } from '@mui/material';
-import "./MenuItem.css"
-import axios from "axios";
 import { UserContext } from '../context/userContext';
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  root: {
+    marginTop: '60px',
+  },
+  menuImage: {
+    height: '200px',
+    width: '250px',
+  },
+});
 
 export default function MenuItem(props) {
+
+  const classes = useStyles();
 
   const { name, image, price } = props
   const itemId = props.id
 
   const { userContextOrderId, userContextCart, setCart } = useContext(UserContext);
-
-  // const addToCart = () => {
-  //   axios.post(`http://localhost:8080/api/order/add_item/${userContextOrderId}/${itemId}`)
-  // }
 
   const addToUserContextCart = () => {
 
@@ -24,11 +31,18 @@ export default function MenuItem(props) {
   }
 
   return(
-    <>
-      <h1>{name}</h1>
-      <img src={image} className="menu-image"/>
-      <h2>{price}$</h2>
-      <h2>item id: {itemId}</h2>
+    <div className={classes.root}>
+      <Typography
+        variant="h2"
+      >
+        {name}
+      </Typography>
+      <img src={image} className={classes.menuImage}/>
+      <Typography
+        variant="h2"
+      >
+        {price}$
+      </Typography>
       <Button
         variant='contained' 
         size='large'
@@ -37,6 +51,6 @@ export default function MenuItem(props) {
       >
         Add to cart!
       </Button>
-    </>
+    </div>
   )
 }

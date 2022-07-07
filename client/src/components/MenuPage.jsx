@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { UserContext } from '../context/userContext';
-import { useNavigate } from "react-router-dom";
+import { Typography } from "@mui/material";
 
-import { Button } from '@mui/material';
 import MenuItem from "./MenuItem";
 
 export default function MenuPage(props) {
@@ -26,7 +25,6 @@ export default function MenuPage(props) {
     })
     .then((result) => {
       const order = result.data.rows[0]
-      // console.log('order:', order)
       if (order) {
         setOrderId(order.id)
       } else {
@@ -60,7 +58,13 @@ export default function MenuPage(props) {
   
   return(
     <>
-      <h1>Menu Page!</h1>
+      <Typography
+        vartiant='h1'
+        fontSize={50}
+        align='center'
+      >
+        Browse our delicious menu!
+      </Typography>
       <ul>
         {menuItemsList}
       </ul>
