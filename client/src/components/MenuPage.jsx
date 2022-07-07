@@ -8,7 +8,7 @@ import MenuItem from "./MenuItem";
 export default function MenuPage(props) {
 
 
-  const { setUserName, userContextUserId, userContextOrderId, setOrderId, userContextMenuItems, setMenuItems } = useContext(UserContext);
+  const { userContextUserId, setOrderId, userContextMenuItems, setMenuItems } = useContext(UserContext);
 
   const createNewOrder = (userId) => {
     axios.post(`http://localhost:8080/api/order/new_order/${userId}`, {

@@ -3,8 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import {Button, Typography } from '@mui/material';
 import axios from "axios";
 import { UserContext } from '../context/userContext';
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  goToMenuBtn: {
+    marginTop: 40,
+  },
+});
 
 export default function SubmitPage() {
+
+  const classes = useStyles();
 
   const { userContextCart, setCart, userContextOrderId, setOrderId } = useContext(UserContext);
 
@@ -16,8 +25,26 @@ export default function SubmitPage() {
   let navigate = useNavigate();
 
   return (
-    <h1>
-      Your order has been submitted!
-    </h1>
+    <div>
+      <Typography
+        variant="h1"
+        fontSize={40}
+        align="center"
+      >
+        Your order has been placed. It will ve ready for pickup in 15 minutes!
+      </Typography>
+      <Typography
+        align="center"
+      >
+        <Button
+          className={classes.goToMenuBtn}
+          variant='contained' 
+          size='large'
+          onClick={() => navigate('/menu')}
+        >
+          Back to menu
+        </Button>
+      </Typography>
+    </div>
   )
 }
