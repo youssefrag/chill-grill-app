@@ -5,11 +5,13 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import axios from "axios";
 import { UserContext } from '../context/userContext';
 import { makeStyles } from "@mui/styles";
+import { grey } from "@mui/material/colors";
 
 const useStyles = makeStyles({
   root: {
     marginLeft: '20px',
     marginRight: '20px',
+    background: 'grey',
   },
   addRemoveBtn: {
     borderRadius: 28,
@@ -81,7 +83,7 @@ export default function Cart(props) {
     if (item.quant > 0) {
 
       return(
-        <div className={classes.root}>
+        <div>
           <Box 
             sx={{ 
               display: 'flex', 

@@ -11,16 +11,24 @@ import RegistrationPage from "./components/RegistrationPage";
 import MenuPage from "./components/MenuPage";
 import Cart from "./components/Cart"
 import SubmitPage from "./components/SubmitPage";
+import { makeStyles } from "@mui/styles";
 
-import './App.css';
+const useStyles = makeStyles({
+  root: {
+    marginTop: '64px',
+    background: 'grey',
+  },
+});
 
 function App() {
+
+  const classes = useStyles();
 
   const isLoggedIn = Cookies.get('user_id') && Cookies.get('chillgrillsession')
   const [isUserLoggedIn, setUserLoggedIn] = useState(isLoggedIn);
 
   return (
-    <div className="App">
+    <div className={classes.root}>
       <UserContextProvider isUserLoggedIn={isUserLoggedIn} setUserLoggedIn={setUserLoggedIn}>
         <header className="App-header">
           <Navbar />
