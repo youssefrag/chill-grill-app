@@ -1,20 +1,23 @@
 import React, { useContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import {Button, Typography, Box } from '@mui/material';
+import {Button, Typography, Box, IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import axios from "axios";
 import { UserContext } from '../context/userContext';
-import { makeStyles } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   root: {
-    width: '80%',
     marginLeft: '20px',
+    marginRight: '20px',
   },
-})
+});
 
 export default function Cart(props) {
 
-  const classes = useStyles;
+  const classes = useStyles();
+
+  console.log('classes:', classes)
 
   const { userContextCart, setCart, userContextMenuItems, setMenuItems, userContextOrderId } = useContext(UserContext);
 
@@ -87,7 +90,7 @@ export default function Cart(props) {
               }}
             >
               <Typography variant= "h2">
-                {item.quant} {item.name}
+                {item.quant} X {item.name}
               </Typography>
               <Button 
                 sx={{
@@ -116,10 +119,21 @@ export default function Cart(props) {
                 -
               </Button>
             </Box>
-            <Box>
+            <Box
+              sx={{ 
+                display: 'flex', 
+                flexDirection: 'row', 
+                justifyContent: 'space-between' 
+              }}
+            >
               <Typography variant="h2">
-              {item.quant * item.price}$
+                {item.quant * item.price}$
               </Typography>
+              <Button
+                onClick={() => clearItemFromCart(item.id)}
+              >
+                <DeleteIcon fontSize="large"/>
+              </Button>
             </Box>
           </Box>
           {/* <h1>
