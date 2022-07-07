@@ -11,6 +11,13 @@ const useStyles = makeStyles({
     marginLeft: '20px',
     marginRight: '20px',
   },
+  addRemoveBtn: {
+    borderRadius: 28,
+    height: 40,
+    width: 40,
+    alignSelf: 'center',
+    marginLeft: 20,
+  },
 });
 
 export default function Cart(props) {
@@ -93,26 +100,14 @@ export default function Cart(props) {
                 {item.quant} X {item.name}
               </Typography>
               <Button 
-                sx={{
-                  borderRadius: 28,
-                  height: 40,
-                  width: 40,
-                  alignSelf: 'center',
-                  marginLeft: 2
-                }}
+                className={classes.addRemoveBtn}
                 variant= 'outlined'
                 onClick={() => addToUserContextCart(item.id)}
               >
                 +
               </Button>
               <Button 
-                sx={{
-                  borderRadius: 28,
-                  height: 40,
-                  width: 40,
-                  alignSelf: 'center',
-                  marginLeft: 2
-                }}
+                className={classes.addRemoveBtn}
                 variant= 'outlined'
                 onClick={() => decreaseFromUserContextCart(item.id)}
               >
@@ -136,34 +131,6 @@ export default function Cart(props) {
               </Button>
             </Box>
           </Box>
-          {/* <h1>
-            name: {item.name}<br />
-            item id: {item.id}<br />
-            quantity: {item.quant}<br />
-            item price: {item.price}<br />
-            price: {item.quant} X {item.price} = {item.quant * item.price}
-          </h1> */}
-          {/* <Button
-            variant='contained' 
-            size='large'
-            onClick={() => addToUserContextCart(item.id)}
-          >
-            Add one
-          </Button>
-          <Button
-            variant='contained' 
-            size='large'
-            onClick={() => decreaseFromUserContextCart(item.id)}
-          >
-            Remove one
-          </Button><br />
-          <Button
-            variant='contained' 
-            size='large'
-            onClick={() => clearItemFromCart(item.id)}
-          >
-            Clear Item
-          </Button> */}
         </div>
       )
     }
