@@ -1,15 +1,29 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 
 import axios from 'axios';
 import { UserContext } from "../context/userContext";
 
-import {Button, Typography, AppBar, Toolbar, Stack } from '@mui/material';
+import {Button, Typography, AppBar, Toolbar } from '@mui/material';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import ShoppingCart from '@mui/icons-material/ShoppingCart'
-import { useEffect } from "react";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  tool: {
+    width:'100%',
+    display: 'inline-flex',
+    justifyContent: 'space-between',
+  },
+  lastBtn: {
+    marginLeft: '10px',
+    marginRight: 50,
+  }
+})
 
 export default function Navbar(props) {
+
+  const classes = useStyles();
 
   const { userContextUserName, setUserName, userContextUserId, setUserId, userContextOrderId, setOrderId, isUserLoggedIn, setUserLoggedIn, userContextCart, setCart, userContextMenuItems } = useContext(UserContext)
 
@@ -49,46 +63,40 @@ export default function Navbar(props) {
   if (isUserLoggedIn) {
     return(
       <AppBar 
-      color='secondary'
-    >
-      <Toolbar style={{ width:'100%', display: 'inline-flex', justifyContent: 'space-between' }}>
-        <Button 
-          variant='contained' 
-          size='large' 
-          style={{ 
-            marginLeft: 10, 
-            marginRight: 10,
-            display: 'inline-flex',
-            justifyContent: 'space-between',
-          }}
-          onClick={() => navigate("/menu")}
-        >
-          <RestaurantMenuIcon />
-          Browse Menu
-        </Button>
-        <Typography variant="h4">
-          Welcome {userContextUserName}
-        </Typography>
-        <div>
-        <Button 
-            variant='contained' 
-            size='large' 
-            style={{ marginLeft: 10, marginRight: 50 }}
-            onClick={() => navigate("/cart")}
-          >
-            <ShoppingCart /> {itemsCartQuantity}
-          </Button>
+        color='secondary'
+      >
+        <Toolbar className={classes.tool}>
           <Button 
             variant='contained' 
-            size='large' 
-            style={{ marginLeft: 10, marginRight: 50 }}
-            onClick={handleLogout}
+            size='large'
+            onClick={() => navigate("/menu")}
           >
-            Logout
+            <RestaurantMenuIcon />
+            Browse Menu
           </Button>
-        </div>
-      </Toolbar>
-    </AppBar>
+          <Typography variant="h4">
+            Welcome {userContextUserName}
+          </Typography>
+          <div>
+          <Button 
+              variant='contained' 
+              size='large' 
+              onClick={() => navigate("/cart")}
+            >
+              <ShoppingCart /> {itemsCartQuantity}
+            </Button>
+            <Button
+              style={{ marginLeft: 10, marginRight: 50}}
+              className={classes.lastBtn}
+              variant='contained' 
+              size='large' 
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+          </div>
+        </Toolbar>
+      </AppBar>
     )
   } else {
 
@@ -96,16 +104,10 @@ export default function Navbar(props) {
       <AppBar 
         color='secondary'
       >
-        <Toolbar style={{ width:'100%', display: 'inline-flex', justifyContent: 'space-between' }}>
-          <Button 
+        <Toolbar className={classes.tool}>
+          <Button
             variant='contained' 
             size='large' 
-            style={{ 
-              marginLeft: 10, 
-              marginRight: 10,
-              display: 'inline-flex',
-              justifyContent: 'space-between',
-            }}
             onClick={() => navigate("/login")}
           >
             <RestaurantMenuIcon />
@@ -118,15 +120,15 @@ export default function Navbar(props) {
             <Button 
               variant='contained' 
               size='large' 
-              style={{ marginLeft: 10, marginRight: 10 }}
               onClick={() => navigate("/login")}
             >
               Login
             </Button>
-            <Button 
+            <Button
+              style={{ marginLeft: 10, marginRight: 50}}
+              className={classes.lastBtn}
               variant='contained' 
               size='large' 
-              style={{ marginLeft: 10, marginRight: 50 }}
               onClick={() => navigate("/register")}
             >
               Register
