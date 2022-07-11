@@ -71,7 +71,7 @@ export default function Navbar(props) {
             <RestaurantMenuIcon />
             Browse Menu
           </Button>
-          <Typography variant="h4">
+          <Typography variant="h3">
             Welcome {userContextUserName}
           </Typography>
           <div>

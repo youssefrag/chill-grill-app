@@ -5,7 +5,7 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   root: {
-    marginTop: '60px',
+    marginTop: '30px',
   },
   menuImage: {
     height: '200px',

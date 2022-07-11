@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     marginTop: '300px',
   },
   goToMenuBtn: {
-    marginTop: '40px',
+    marginTop: 400,
   },
   cartEmptyMsg: {
     marginTop: 100,
@@ -105,16 +105,24 @@ export default function Cart(props) {
               <Typography variant= "h2">
                 {item.quant} X {item.name}
               </Typography>
-              <Button 
+              <Button
+                sx={{
+                  marginLeft: 3
+                }}
                 className={classes.addRemoveBtn}
-                variant= 'outlined'
+                variant= 'contained'
+                color="secondary"
                 onClick={() => addToUserContextCart(item.id)}
               >
                 +
               </Button>
-              <Button 
+              <Button
+                sx={{
+                  marginLeft: 1
+                }}
                 className={classes.addRemoveBtn}
-                variant= 'outlined'
+                variant= 'contained'
+                color="secondary"
                 onClick={() => decreaseFromUserContextCart(item.id)}
               >
                 -
@@ -131,6 +139,7 @@ export default function Cart(props) {
                 {item.quant * item.price}$
               </Typography>
               <Button
+                color="secondary"
                 onClick={() => clearItemFromCart(item.id)}
               >
                 <DeleteIcon fontSize="large"/>
@@ -147,7 +156,8 @@ export default function Cart(props) {
     return(
       <>
         <Typography
-          className={classes.cartEmptyMsg}
+          // className={classes.cartEmptyMsg}
+          color="error"
           vartiant='h1'
           fontSize={50}
           align="center"
@@ -182,6 +192,7 @@ export default function Cart(props) {
         <Button
           variant='contained' 
           size='large'
+          color="secondary"
           onClick={submitOrder(userContextOrderId)}
           onClick={() => navigate('/submit')}
         >
