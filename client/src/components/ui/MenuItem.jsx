@@ -46,7 +46,7 @@ export default function MenuItem(props) {
       <Button
         variant='contained' 
         size='large'
-        // onClick={addToCart}
+        color='secondary'
         onClick={addToUserContextCart}
       >
         Add to cart!
