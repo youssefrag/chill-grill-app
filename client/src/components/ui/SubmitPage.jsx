@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import {Button, Typography } from '@mui/material';
-import { UserContext } from '../context/userContext';
+import { UserContext } from '../../context/userContext';
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({

@@ -1,15 +1,17 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import Cookies from 'js-cookie';
 import axios from "axios";
-import { UserContext } from '../context/userContext';
+import { UserContext } from '../../context/userContext';
 import { useNavigate } from "react-router-dom";
 import {Button, TextField } from '@mui/material';
 
-export default function RegistrationPage() {
+export default function LoginPage(props) {
 
   let navigate = useNavigate();
 
+  const { userContextUserName, setUserName, userContextUserId, setUserId, userContextOrderId, setOrderId, isUserLoggedIn, setUserLoggedIn } = useContext(UserContext);
+
   const [user, setUser] = useState({
-    name: '',
     email:'',
     password:'',
   })
@@ -21,48 +23,39 @@ export default function RegistrationPage() {
   }
 
   const handleSubmit = () => {
-    const { name, email, password } = user
-    if (!name || !email || !password) {
-       alert('Empty values!')
-       return
+    const { email, password } = user
+    if (!email || !password) {
+      alert('Empty values!')
+      return
     }
-    axios.post('http://localhost:8080/api/auth/register', user, {
-       withCredentials: true,
+    axios.post('http://localhost:8080/api/auth/login', user, {
+      withCredentials: true,
     })
     .then((result) => { 
-       console.log(result.data)
-       navigate("/login")
+      // console.log('id:', result.data.user.id)
+      const userId = result.data.user.id
+      const userName = result.data.user.name
+      setUserName(userName)
+      setUserId(userId)
+      setUserLoggedIn(true)
+      // updateOrderId(userContextUserId)
+      navigate("/menu")
     })
     .catch((error) => {
-       console.log(error)
+      console.log(error)
     })
- }
+  }
 
   return(
     <>
       <h1>
-        Registration Page!
+        Please login to view menu!
       </h1>
       <form
         id="registration-form"
         noValidate 
         autoComplete="off"
       >
-        <TextField
-          type="text"
-          label="Name"
-          name='name'
-          color="secondary"
-          required
-          value={user.name}
-          onChange={handleChange}
-          style={{ 
-            marginTop: 20,
-            marginBottom: 20,
-            marginLeft: 20,
-            display: 'block',
-          }}
-        />
         <TextField
           type="text"
           label="Email"
@@ -101,10 +94,9 @@ export default function RegistrationPage() {
             marginLeft: 20,
           }}
         >
-          Register!
+          Login!
         </Button>
       </form>
     </>
   )
 }
-

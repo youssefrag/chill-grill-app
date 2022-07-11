@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 
 import axios from 'axios';
-import { UserContext } from "../context/userContext";
+import { UserContext } from "../../context/userContext";
 
 import {Button, Typography, AppBar, Toolbar } from '@mui/material';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
   },
   lastBtn: {
-    marginLeft: '10px',
+    marginLeft: 10,
     marginRight: 50,
   }
 })

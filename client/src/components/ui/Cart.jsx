@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {Button, Typography, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from "axios";
-import { UserContext } from '../context/userContext';
+import { UserContext } from '../../context/userContext';
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
@@ -16,13 +16,12 @@ const useStyles = makeStyles({
     height: 40,
     width: 40,
     alignSelf: 'center',
-    marginLeft: 20,
   },
   totalPrice: {
-    marginTop: '30px',
+    marginTop: '300px',
   },
   goToMenuBtn: {
-    marginTop: 40,
+    marginTop: '40px',
   },
   cartEmptyMsg: {
     marginTop: 100,

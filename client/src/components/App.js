@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import { UserContextProvider } from "./context/userContext";
+import { UserContextProvider } from "../context/userContext";
 import Cookies from 'js-cookie';
 
-import Navbar from './components/Navbar';
-import LoginPage from "./components/LoginPage";
-import HomePage from "./components/HomePage";
-import RegistrationPage from "./components/RegistrationPage";
-import MenuPage from "./components/MenuPage";
-import Cart from "./components/Cart"
-import SubmitPage from "./components/SubmitPage";
+import Navbar from './ui/Navbar';
+import LoginPage from "./ui/LoginPage";
+import RegistrationPage from "./ui/RegistrationPage";
+import MenuPage from "./ui/MenuPage";
+import Cart from "./ui/Cart"
+import SubmitPage from "./ui/SubmitPage";
+
 import { makeStyles } from "@mui/styles";
+import { ThemeProvider } from "@mui/styles";
 
 const useStyles = makeStyles({
   root: {

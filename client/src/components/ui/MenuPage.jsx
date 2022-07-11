@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { UserContext } from '../context/userContext';
+import { UserContext } from '../../context/userContext';
 import { Typography } from "@mui/material";
 
 import MenuItem from "./MenuItem";

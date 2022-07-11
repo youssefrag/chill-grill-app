@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import {Button, Typography } from '@mui/material';
-import { UserContext } from '../context/userContext';
+import { UserContext } from '../../context/userContext';
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
