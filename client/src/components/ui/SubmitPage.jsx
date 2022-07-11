@@ -29,6 +29,9 @@ export default function SubmitPage() {
         variant="h1"
         fontSize={40}
         align="center"
+        sx={{
+          marginTop: 12
+        }}
       >
         Your order has been placed. It will ve ready for pickup in 15 minutes!
       </Typography>
@@ -36,9 +39,13 @@ export default function SubmitPage() {
         align="center"
       >
         <Button
+          sx={{
+            marginTop: 5
+          }}
           className={classes.goToMenuBtn}
           variant='contained' 
           size='large'
+          color='secondary'
           onClick={() => navigate('/menu')}
         >
           Back to menu
