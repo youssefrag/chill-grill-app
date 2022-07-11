@@ -12,7 +12,7 @@ import Cart from "./ui/Cart"
 import SubmitPage from "./ui/SubmitPage";
 
 import { makeStyles } from "@mui/styles";
-import { ThemeProvider } from "@mui/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import theme from "./ui/Theme";
 
 const useStyles = makeStyles({

@@ -15,10 +15,6 @@ const useStyles = makeStyles({
     display: 'inline-flex',
     justifyContent: 'space-between',
   },
-  lastBtn: {
-    marginLeft: 10,
-    marginRight: 50,
-  }
 })
 
 export default function Navbar(props) {
@@ -63,10 +59,11 @@ export default function Navbar(props) {
   if (isUserLoggedIn) {
     return(
       <AppBar 
-        color='secondary'
+        color='primary'
       >
         <Toolbar className={classes.tool}>
           <Button 
+            color="secondary"
             variant='contained' 
             size='large'
             onClick={() => navigate("/menu")}
@@ -78,7 +75,8 @@ export default function Navbar(props) {
             Welcome {userContextUserName}
           </Typography>
           <div>
-          <Button 
+            <Button 
+              color="secondary"
               variant='contained' 
               size='large' 
               onClick={() => navigate("/cart")}
@@ -86,8 +84,8 @@ export default function Navbar(props) {
               <ShoppingCart /> {itemsCartQuantity}
             </Button>
             <Button
+              color="secondary"
               style={{ marginLeft: 10, marginRight: 50}}
-              className={classes.lastBtn}
               variant='contained' 
               size='large' 
               onClick={handleLogout}
@@ -102,10 +100,11 @@ export default function Navbar(props) {
 
     return(
       <AppBar 
-        color='secondary'
+        color='primary'
       >
         <Toolbar className={classes.tool}>
           <Button
+            color="secondary"
             variant='contained' 
             size='large' 
             onClick={() => navigate("/login")}
@@ -117,7 +116,8 @@ export default function Navbar(props) {
             Chill Grill Restaurant
           </Typography>
           <div>
-            <Button 
+            <Button
+              color="secondary"
               variant='contained' 
               size='large' 
               onClick={() => navigate("/login")}
@@ -125,6 +125,7 @@ export default function Navbar(props) {
               Login
             </Button>
             <Button
+              color="secondary"
               style={{ marginLeft: 10, marginRight: 50}}
               className={classes.lastBtn}
               variant='contained' 
