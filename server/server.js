@@ -8,8 +8,13 @@ const authRoutes = require('./routes/auth')
 const orderRoutes = require('./routes/order')
 
 const { Pool } = require('pg');
-const dbParams = require("./lib/db.js")
-const db = new Pool(dbParams)
+const db = new Pool({
+  user: "youssefragab",
+  password: "password",
+  host: "localhost",
+  port: 5432,
+  database: "chill_grill"
+})
 db.connect()
 
 App.use(Cors({
