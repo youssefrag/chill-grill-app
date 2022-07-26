@@ -3,9 +3,31 @@ import Cookies from 'js-cookie';
 import axios from "axios";
 import { UserContext } from '../../context/userContext';
 import { useNavigate } from "react-router-dom";
-import {Button, TextField } from '@mui/material';
+import {Button, TextField, Typography } from '@mui/material';
+
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  form: {
+    border: '1px solid',
+    marginLeft: '200px',
+    marginRight: '200px',
+    backgroundColor: 'white',
+    padding: '30px',
+    borderRadius: '20px',
+  },
+  title: {
+    textAlign: 'center',
+    paddingBottom: '40px'
+  },
+  field: {
+    width: '400px',
+  }
+})
 
 export default function LoginPage(props) {
+
+  const classes = useStyles()
 
   let navigate = useNavigate();
 
@@ -32,13 +54,11 @@ export default function LoginPage(props) {
       withCredentials: true,
     })
     .then((result) => { 
-      // console.log('id:', result.data.user.id)
       const userId = result.data.user.id
       const userName = result.data.user.name
       setUserName(userName)
       setUserId(userId)
       setUserLoggedIn(true)
-      // updateOrderId(userContextUserId)
       navigate("/menu")
     })
     .catch((error) => {
@@ -47,14 +67,22 @@ export default function LoginPage(props) {
   }
 
   return(
-    <>
-      <h1>
+    <div className={classes.form}>
+      <Typography
+        variant='h3'
+        className={classes.title}
+      >
         Please login to view menu!
-      </h1>
+      </Typography>
       <form
         id="registration-form"
         noValidate 
         autoComplete="off"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}
       >
         <TextField
           type="text"
@@ -64,11 +92,9 @@ export default function LoginPage(props) {
           required
           value={user.email}
           onChange={handleChange}
-          style={{ 
-            marginTop: 20,
-            marginBottom: 20,
-            marginLeft: 20,
-            display: 'block',
+          className={classes.field}
+          sx={{
+            marginBottom: '20px'
           }}
         />
         <TextField
@@ -79,24 +105,20 @@ export default function LoginPage(props) {
           required
           value={user.password}
           onChange={handleChange}
-          style={{ 
-            marginTop: 20,
-            marginBottom: 20,
-            marginLeft: 20,
-            display: 'block',
+          className={classes.field}
+          sx={{
+            marginBottom: '20px'
           }}
         />
         <Button
           variant='contained' 
           size='large'
           onClick={handleSubmit}
-          style={{ 
-            marginLeft: 20,
-          }}
+
         >
           Login!
         </Button>
       </form>
-    </>
+    </div>
   )
 }
