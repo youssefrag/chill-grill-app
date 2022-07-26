@@ -5,8 +5,12 @@ import { UserContext } from '../../context/userContext';
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
-  goToMenuBtn: {
-    marginTop: 40,
+  root: {
+    border: '1px solid',
+    marginLeft: '100px',
+    marginRight: '100px',
+    backgroundColor: 'white',
+    borderRadius: '20px',
   },
 });
 
@@ -24,13 +28,13 @@ export default function SubmitPage() {
   let navigate = useNavigate();
 
   return (
-    <div>
+    <div className={classes.root}>
       <Typography
         variant="h1"
         fontSize={40}
         align="center"
         sx={{
-          marginTop: 12
+          marginTop: '20px'
         }}
       >
         Your order has been placed. It will ve ready for pickup in 15 minutes!
@@ -40,7 +44,8 @@ export default function SubmitPage() {
       >
         <Button
           sx={{
-            marginTop: 5
+            marginBottom: '20px',
+            marginTop: '20px'
           }}
           className={classes.goToMenuBtn}
           variant='contained' 

@@ -8,8 +8,12 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   root: {
-    marginLeft: '20px',
-    marginRight: '20px',
+    border: '1px solid',
+    marginLeft: '100px',
+    marginRight: '100px',
+    backgroundColor: 'white',
+    padding: '30px',
+    borderRadius: '20px',
   },
   addRemoveBtn: {
     borderRadius: 28,
@@ -154,7 +158,7 @@ export default function Cart(props) {
 
   if (totalPrice === 0) {
     return(
-      <>
+      <div className={classes.root}>
         <Typography
           // className={classes.cartEmptyMsg}
           color="error"
@@ -176,7 +180,7 @@ export default function Cart(props) {
             Go to menu
           </Button>
         </Typography>
-      </>
+      </div>
     )
   } else {
     return(
