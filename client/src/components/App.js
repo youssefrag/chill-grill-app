@@ -17,7 +17,9 @@ import theme from "./ui/Theme";
 
 const useStyles = makeStyles({
   root: {
-    marginTop: '80px',
+    paddingTop: '100px',
+    paddingBottom: '500px',
+    backgroundColor: '#D3D3D3',
   },
 });
 

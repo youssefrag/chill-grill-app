@@ -2,9 +2,31 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { UserContext } from '../../context/userContext';
 import { useNavigate } from "react-router-dom";
-import {Button, TextField } from '@mui/material';
+import {Button, TextField, Typography } from '@mui/material';
+
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  form: {
+    border: '1px solid',
+    marginLeft: '200px',
+    marginRight: '200px',
+    backgroundColor: 'white',
+    padding: '30px',
+    borderRadius: '20px',
+  },
+  title: {
+    textAlign: 'center',
+    paddingBottom: '40px'
+  },
+  field: {
+    width: '400px',
+  }
+})
 
 export default function RegistrationPage() {
+
+  const classes = useStyles()
 
   let navigate = useNavigate();
 
@@ -39,14 +61,22 @@ export default function RegistrationPage() {
  }
 
   return(
-    <>
-      <h1>
-        Registration Page!
-      </h1>
+    <div className={classes.form}>
+      <Typography
+        variant='h3'
+        className={classes.title}
+      >
+        Registration Page
+      </Typography>
       <form
         id="registration-form"
         noValidate 
         autoComplete="off"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}
       >
         <TextField
           type="text"
@@ -56,11 +86,9 @@ export default function RegistrationPage() {
           required
           value={user.name}
           onChange={handleChange}
-          style={{ 
-            marginTop: 20,
-            marginBottom: 20,
-            marginLeft: 20,
-            display: 'block',
+          className={classes.field}
+          sx={{
+            marginBottom: '20px'
           }}
         />
         <TextField
@@ -71,11 +99,9 @@ export default function RegistrationPage() {
           required
           value={user.email}
           onChange={handleChange}
-          style={{ 
-            marginTop: 20,
-            marginBottom: 20,
-            marginLeft: 20,
-            display: 'block',
+          className={classes.field}
+          sx={{
+            marginBottom: '20px'
           }}
         />
         <TextField
@@ -86,11 +112,9 @@ export default function RegistrationPage() {
           required
           value={user.password}
           onChange={handleChange}
-          style={{ 
-            marginTop: 20,
-            marginBottom: 20,
-            marginLeft: 20,
-            display: 'block',
+          className={classes.field}
+          sx={{
+            marginBottom: '20px'
           }}
         />
         <Button
@@ -104,7 +128,7 @@ export default function RegistrationPage() {
           Register!
         </Button>
       </form>
-    </>
+    </div>
   )
 }
 
