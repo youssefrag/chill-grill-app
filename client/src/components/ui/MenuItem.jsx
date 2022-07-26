@@ -6,6 +6,10 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles({
   root: {
     marginTop: '30px',
+    marginLeft: '100px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
   menuImage: {
     height: '200px',

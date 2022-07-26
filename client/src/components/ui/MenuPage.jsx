@@ -1,12 +1,34 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { UserContext } from '../../context/userContext';
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 
 import MenuItem from "./MenuItem";
 
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  root: {
+    border: '1px solid',
+    marginLeft: '100px',
+    marginRight: '100px',
+    backgroundColor: 'white',
+    padding: '30px',
+    borderRadius: '20px',
+  },
+  title: {
+    textAlign: 'center',
+    paddingBottom: '20px'
+  },
+  menuItems: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  }
+})
+
 export default function MenuPage(props) {
 
+  const classes = useStyles()
 
   const { userContextUserId, setOrderId, userContextMenuItems, setMenuItems } = useContext(UserContext);
 
@@ -57,17 +79,17 @@ export default function MenuPage(props) {
   })
   
   return(
-    <>
+    <div className={classes.root}>
       <Typography
         vartiant='h1'
         fontSize={50}
-        align='center'
+        className={classes.title}
       >
         Browse our delicious menu!
       </Typography>
-      <ul>
+      <Box className={classes.menuItems}>
         {menuItemsList}
-      </ul>
-    </>
+      </Box>
+    </div>
   )
 }
