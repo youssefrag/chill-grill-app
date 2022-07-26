@@ -105,7 +105,7 @@ export default function Navbar(props) {
         <Toolbar className={classes.tool}>
           <Button
             color="secondary"
-            variant='contained' 
+            variant='disabled' 
             size='large' 
             onClick={() => navigate("/login")}
           >
